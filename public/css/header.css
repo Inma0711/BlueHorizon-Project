@@ -14,8 +14,8 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.logo-web:hover {
-    transform: scale(1.1);
+.zoom-hover:hover {
+    transform: scale(1.1); 
 }
 
 .navbar-container {
@@ -55,7 +55,7 @@
 }
 
 .menu-link:hover {
-    color: var(--yellow);
+    color: var(--yellow); 
 }
 
 .right {
@@ -74,7 +74,7 @@
 
 .auth-links {
     display: flex;
-    gap: 15px;
+    gap: 15px; 
 }
 
 .auth-link {
@@ -85,5 +85,5 @@
 }
 
 .auth-link:hover {
-    color: var(--yellow);
+    color: var(--yellow); 
 }
