@@ -13,7 +13,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <input id="name" type="text" class="input-field @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nombre">
+                        <input id="name" type="text" class="input-field2 @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nombre">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -24,7 +24,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <input id="email" type="email" class="input-field @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Correo electrónico">
+                        <input id="email" type="email" class="input-field2 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Correo electrónico">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -35,7 +35,7 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <input id="password" type="password" class="input-field @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Contraseña">
+                        <input id="password" type="password" class="input-field2 @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Contraseña">
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -46,13 +46,13 @@
 
                 <div class="row mb-3">
                     <div class="col-md-12">
-                        <input id="password-confirm" type="password" class="input-field" name="password_confirmation" required autocomplete="new-password" placeholder="Confirmar contraseña">
+                        <input id="password-confirm" type="password" class="input-field2" name="password_confirmation" required autocomplete="new-password" placeholder="Confirmar contraseña">
                     </div>
                 </div>
 
                 <div class="row mb-0">
                     <div class="col-md-12 text-center">
-                        <button type="submit" class="login-btn">
+                        <button type="submit" class="login-btn" id="register-btn">
                             {{ __('Entrar') }}
                         </button>
                     </div>
