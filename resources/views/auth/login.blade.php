@@ -43,9 +43,11 @@
 </div>
 </div>
 
-<div class="light"></div>
-<div class="light"></div>
-<div class="light"></div>
-<div class="light"></div>
-<div class="light"></div>
+<div class="lights-container">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div> 
+</div>
 @endsection
