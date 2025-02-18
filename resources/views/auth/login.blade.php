@@ -18,7 +18,7 @@
         @enderror
 
         <input id="password" type="password" class="input-field @error('password') is-invalid @enderror" 
-            name="password" required autocomplete="current-password" placeholder="Password">
+            name="password" required autocomplete="current-password" placeholder="Contraseña">
         @error('password')
             <span class="invalid-feedback">{{ $message }}</span>
         @enderror
@@ -26,7 +26,7 @@
         <div class="checkbox-container">
             <input class="checkbox" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
             <label class="checkbox-label" for="remember">
-                {{ __('Remember Me') }}
+                {{ __('Recuerdame') }}
             </label>
         </div>
 
@@ -36,7 +36,7 @@
 
         @if (Route::has('password.request'))
             <a class="forgot-password" href="{{ route('password.request') }}">
-                {{ __('Forgot Your Password?') }}
+                {{ __('¿Olvidaste la contraseña?') }}
             </a>
         @endif
     </form>
