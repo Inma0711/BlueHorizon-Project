@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Plane extends Model
@@ -13,4 +14,8 @@ class Plane extends Model
         'name',
         'max_seats',
     ];
+    
+    public function flights(): HasMany {
+        return $this->hasMany(Flight::class, 'plane_id');
+    }
 }
