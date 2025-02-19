@@ -15,5 +15,5 @@ Route::get('/user', function (Request $request) {
     Route::get('/planes', [PlaneController::class, 'index'])->name('planesIndex'); 
     Route::get('/planes/{id}', [PlaneController::class, 'show'])->name('planesShow'); 
     Route::put('/planes/{id}', [PlaneController::class, 'update'])->name('planesUpdate'); 
-    Route::delete('/planes/{id}', [PlaneController::class, 'destroy'])->name('planesDestroy');
+    Route::delete('/planes/{id}', [PlaneController::class, 'destroy'])->name('planesDelete');
 

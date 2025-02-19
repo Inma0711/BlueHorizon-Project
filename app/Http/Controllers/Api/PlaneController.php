@@ -62,6 +62,6 @@ class PlaneController extends Controller
         }
 
         $plane->delete();
-        return response()->json(['message' => 'Avión eliminado'], 200);
+        return response()->noContent();
     }
 }
