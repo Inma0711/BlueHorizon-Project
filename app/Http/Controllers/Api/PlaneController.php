@@ -8,19 +8,19 @@ use App\Http\Controllers\Controller;
 
 class PlaneController extends Controller
 {
-   
+
     public function index()
     {
         return response()->json(Plane::all(), 200);
     }
 
-    
+
     public function create()
     {
         //
     }
 
-  
+
     public function store(Request $request)
     {
         $request->validate([
@@ -41,25 +41,26 @@ class PlaneController extends Controller
         return response()->json($plane, 200);
     }
 
-  
+
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $plane = Plane::find($id);
+        if (!$plane) {
+            return response()->json(['message' => 'Avión no encontrado'], 404);
+        }
+
+        $plane->delete();
+        return response()->json(['message' => 'Avión eliminado'], 200);
     }
 }
