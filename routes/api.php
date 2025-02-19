@@ -19,8 +19,8 @@ Route::get('/user', function (Request $request) {
     Route::put('/planes/{id}', [PlaneController::class, 'update'])->name('planeUpdate'); 
     Route::delete('/planes/{id}', [PlaneController::class, 'destroy'])->name('planeDelete');
 
-    Route::post('/flight', [FlightController::class, 'store'])->name('flightStore'); 
-    Route::get('/flight', [FlightController::class, 'index'])->name('flightIndex'); 
-    Route::get('/flight/{id}', [FlightController::class, 'show'])->name('flightShow'); 
-    Route::put('/flight/{id}', [FlightController::class, 'update'])->name('flightUpdate'); 
-    Route::delete('/flight/{id}', [FlightController::class, 'destroy'])->name('flightDelete');
+    Route::post('/flights', [FlightController::class, 'store'])->name('flightStore'); 
+    Route::get('/flights', [FlightController::class, 'index'])->name('flightIndex'); 
+    Route::get('/flights/{id}', [FlightController::class, 'show'])->name('flightShow'); 
+    Route::put('/flights/{id}', [FlightController::class, 'update'])->name('flightUpdate'); 
+    Route::delete('/flights/{id}', [FlightController::class, 'destroy'])->name('flightDelete');
