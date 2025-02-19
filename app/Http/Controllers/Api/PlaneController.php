@@ -8,25 +8,19 @@ use App\Http\Controllers\Controller;
 
 class PlaneController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+   
     public function index()
     {
         return response()->json(Plane::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+  
     public function store(Request $request)
     {
         $request->validate([
@@ -38,17 +32,16 @@ class PlaneController extends Controller
         return response()->json($plane, 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $plane = Plane::find($id);
+        if (!$plane) {
+            return response()->json(['message' => 'Avión no encontrado'], 404);
+        }
+        return response()->json($plane, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+  
     public function edit(string $id)
     {
         //
