@@ -14,13 +14,7 @@ class PlaneController extends Controller
         return response()->json(Plane::all(), 200);
     }
 
-
-    public function create()
-    {
-        //
-    }
-
-
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -32,6 +26,7 @@ class PlaneController extends Controller
         return response()->json($plane, 201);
     }
 
+
     public function show(string $id)
     {
         $plane = Plane::find($id);
@@ -42,16 +37,22 @@ class PlaneController extends Controller
     }
 
 
-    public function edit(string $id)
-    {
-        //
-    }
-
-
     public function update(Request $request, string $id)
     {
-        //
+        $plane = Plane::find($id);
+        if (!$plane) {
+            return response()->json(['message' => 'Avión no encontrado'], 404);
+        }
+
+        $request->validate([
+            'name' => 'sometimes|string|unique:planes,name,' . $id,
+            'max_seats' => 'sometimes|integer|min:1'
+        ]);
+
+        $plane->update($request->all());
+        return response()->json($plane, 200);
     }
+
 
     public function destroy(string $id)
     {
