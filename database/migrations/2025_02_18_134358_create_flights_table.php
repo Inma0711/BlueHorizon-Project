@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('departure_location');
             $table->string('arrival_location');
             $table->integer('available_seats');
-            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

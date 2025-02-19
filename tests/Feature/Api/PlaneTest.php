@@ -26,7 +26,7 @@ class PlaneTest extends TestCase
     public function test_CheckIfTheApiReturnsAllAircraft()
     {
         Plane::factory(3)->create();
-        $response = $this->get(route('planesIndex'));
+        $response = $this->get(route('planeIndex'));
         $response->assertStatus(200)
             ->assertJsonCount(3);
     }
@@ -34,7 +34,7 @@ class PlaneTest extends TestCase
     public function test_CheckIfTheApiReturnsOnlyOneAircraft()
     {
         $plane = Plane::factory()->create();
-        $response = $this->get(route('planesShow', $plane->id));
+        $response = $this->get(route('planeShow', $plane->id));
 
         $response->assertStatus(200)
             ->assertJson([
@@ -46,7 +46,7 @@ class PlaneTest extends TestCase
 
     public function test_CheckIfYouAreTryingToSearchForAnAircraftThatDoesNotExist()
     {
-        $response = $this->getJson(route('planesShow', ['id' => 999]));
+        $response = $this->getJson(route('planeShow', ['id' => 999]));
         $response->assertStatus(404)
             ->assertJson([
                 'message' => 'Avión no encontrado',
@@ -60,7 +60,7 @@ class PlaneTest extends TestCase
             'max_seats' => 160,
         ];
 
-        $response = $this->post(route('planesStore'), $data);
+        $response = $this->post(route('planeStore'), $data);
         $response->assertStatus(201)
             ->assertJson([
                 'name' => 'Airbus B420',
@@ -74,7 +74,7 @@ class PlaneTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user, 'sanctum')->postJson(route('planesStore'), []);
+        $response = $this->actingAs($user, 'sanctum')->postJson(route('planeStore'), []);
 
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['name', 'max_seats']);
@@ -102,7 +102,7 @@ class PlaneTest extends TestCase
 
     public function test_ChecksThatTheApiReturnsAnErrorWhenWeTryToUpdateANonExistentAircraft()
     {
-        $response = $this->put(route('planesUpdate', ['id' => 9999]), [
+        $response = $this->put(route('planeUpdate', ['id' => 9999]), [
             'name' => 'Avioncito 103',
             'max_seats' => 205,
         ]);
@@ -110,11 +110,11 @@ class PlaneTest extends TestCase
         $response->assertStatus(404);
     }
 
-    public function test_it_can_delete_a_plane()
+    public function test_CheckThatAnAircraftCanBeDeletedCorrectlyInTheDatabaseViaTheApi()
     {
         $plane = Plane::factory()->create();
 
-        $response = $this->delete(route('planesDelete', $plane->id));
+        $response = $this->delete(route('planeDelete', $plane->id));
         $response->assertStatus(204);
         $this->assertDatabaseMissing('planes', ['id' => $plane->id]);
     }

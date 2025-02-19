@@ -20,7 +20,6 @@ class Flight extends Model
         'departure_location',
         'arrival_location',
         'available_seats',
-        'status'
     ];
     public function plane(): BelongsTo
     {
