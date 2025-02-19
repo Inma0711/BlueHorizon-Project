@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         ]);
         */
 
-        //Plane::factory(10)->create();
+        Plane::factory(10)->create();
     }
 }
