@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Flight;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Plane;
@@ -22,6 +23,7 @@ class DatabaseSeeder extends Seeder
         ]);
         */
 
-        Plane::factory(10)->create();
+        Plane::factory(20)->create();
+        Flight::factory(20)->create();
     }
 }

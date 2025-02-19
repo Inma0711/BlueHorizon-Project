@@ -14,12 +14,12 @@ class PlaneFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    
+
     public function definition(): array
     {
         return [
             'name' => $this->faker->word() . ' Plane',
-            'max_seats' => $this->faker->numberBetween(50, 300),
+            'max_seats' => $this->faker->numberBetween(10, 30),
         ];
     }
 }

@@ -21,11 +21,8 @@ class FlightController extends Controller
         $validated = $request->validate([
             'plane_id' => 'required|exists:planes,id',
             'date' => 'required|date',
-            'departure_time' => 'required',
-            'arrival_time' => 'required',
             'departure_location' => 'required|string|max:255',
             'arrival_location' => 'required|string|max:255',
-            'available_seats' => 'required|integer|min:1',
         ]);
 
         $flight = Flight::create($validated);
@@ -55,12 +52,8 @@ class FlightController extends Controller
         $validated = $request->validate([
             'plane_id' => 'sometimes|exists:planes,id',
             'date' => 'sometimes|date',
-            'departure_time' => 'sometimes',
-            'arrival_time' => 'sometimes',
             'departure_location' => 'sometimes|string|max:255',
             'arrival_location' => 'sometimes|string|max:255',
-            'available_seats' => 'sometimes|integer|min:1',
-            'status' => 'boolean',
         ]);
 
         $flight->update($validated);

@@ -15,12 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('plane_id');
             $table->timestamp('date');
-            $table->time('departure_time'); 
-            $table->time('arrival_time'); 
             $table->foreign('plane_id')->references('id')->on('planes')->onDelete('cascade')->onUpdate('cascade');
             $table->string('departure_location');
             $table->string('arrival_location');
-            $table->integer('available_seats');
             $table->timestamps();
         });
     }

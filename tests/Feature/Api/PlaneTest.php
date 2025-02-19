@@ -31,6 +31,7 @@ class PlaneTest extends TestCase
             ->assertJsonCount(3);
     }
 
+
     public function test_CheckIfTheApiReturnsOnlyOneAircraft()
     {
         $plane = Plane::factory()->create();
@@ -44,6 +45,7 @@ class PlaneTest extends TestCase
             ]);
     }
 
+
     public function test_CheckIfYouAreTryingToSearchForAnAircraftThatDoesNotExist()
     {
         $response = $this->getJson(route('planeShow', ['id' => 999]));
@@ -52,6 +54,7 @@ class PlaneTest extends TestCase
                 'message' => 'Avión no encontrado',
             ]);
     }
+
 
     public function test_CheckIfAnAircraftIsCreatedCorrectly()
     {
@@ -70,6 +73,7 @@ class PlaneTest extends TestCase
         $this->assertDatabaseHas('planes', $data);
     }
 
+
     public function test_CheckThatAnAircraftCannotBeCreatedIfMandatoryFieldsAreMissing()
     {
         $user = User::factory()->create();
@@ -79,6 +83,7 @@ class PlaneTest extends TestCase
         $response->assertStatus(422)
             ->assertJsonValidationErrors(['name', 'max_seats']);
     }
+
 
     public function test_ChecksThatAnAircraftCanBeUpdatedInTheDatabase()
     {
@@ -100,6 +105,7 @@ class PlaneTest extends TestCase
         $this->assertDatabaseHas('planes', $updatedData);
     }
 
+
     public function test_ChecksThatTheApiReturnsAnErrorWhenWeTryToUpdateANonExistentAircraft()
     {
         $response = $this->put(route('planeUpdate', ['id' => 9999]), [
@@ -110,6 +116,7 @@ class PlaneTest extends TestCase
         $response->assertStatus(404);
     }
 
+
     public function test_CheckThatAnAircraftCanBeDeletedCorrectlyInTheDatabaseViaTheApi()
     {
         $plane = Plane::factory()->create();
@@ -119,6 +126,7 @@ class PlaneTest extends TestCase
         $this->assertDatabaseMissing('planes', ['id' => $plane->id]);
     }
 
+    
     public function test_ChecksThatTheApiReturnsA404CodeWhenAnAttemptIsMadeToDeleteAnAircraftThatDoesNotExist()
     {
         $response = $this->deleteJson('/api/planes/999');
