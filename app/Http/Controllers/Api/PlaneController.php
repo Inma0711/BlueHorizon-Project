@@ -13,7 +13,7 @@ class PlaneController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(Plane::all(), 200);
     }
 
     /**
