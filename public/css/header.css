@@ -112,7 +112,7 @@
     display: none;
     position: absolute;
     right: 0;
-    background-color: white;
+    background-color: var(--white);
     min-width: 160px; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;

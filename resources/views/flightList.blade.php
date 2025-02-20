@@ -20,9 +20,15 @@
                         {{ $flightList->date }}
                     </div>
                     <div class="container-flight3">
-                        {{ $flightList->departure_location }}
-                        {{ $flightList->arrival_location }}
-                        {{ $flightList->price }}
+                        <div class="ctf-3-1">
+                            {{ $flightList->departure_location }}
+                        </div>
+                        <div class="ctf-3-2">
+                            {{ $flightList->arrival_location }}
+                        </div>
+                        <div class="ctf-3-3">
+                            {{ $flightList->price }}€
+                        </div>
                     </div>
                 </div>
             @endforeach
