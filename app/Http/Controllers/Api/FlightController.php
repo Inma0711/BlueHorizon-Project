@@ -23,6 +23,7 @@ class FlightController extends Controller
             'date' => 'required|date',
             'departure_location' => 'required|string|max:255',
             'arrival_location' => 'required|string|max:255',
+            'price' => 'required|integer|max:255',
         ]);
 
         $flight = Flight::create($validated);
@@ -54,6 +55,7 @@ class FlightController extends Controller
             'date' => 'sometimes|date',
             'departure_location' => 'sometimes|string|max:255',
             'arrival_location' => 'sometimes|string|max:255',
+            'price' => 'sometimes|integer|max:255',
         ]);
 
         $flight->update($validated);

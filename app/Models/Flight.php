@@ -17,6 +17,7 @@ class Flight extends Model
         'date',
         'departure_location',
         'arrival_location',
+        'price',
     ];
     public function plane(): BelongsTo
     {

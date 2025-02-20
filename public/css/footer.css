@@ -1,0 +1,20 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--lightBlue);
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.logo-git {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; 
+}
+
+.logo-git:hover {
+    transform: scale(1.2);
+}

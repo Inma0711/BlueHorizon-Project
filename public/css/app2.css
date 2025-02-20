@@ -1,6 +1,5 @@
-@import url(header.css);
-@import url(home.css);
-@import url(login.css);
+@import url(header2.css);
+@import url(footer.css);
 @import url(flightList.css);
 
 :root {
@@ -20,5 +19,5 @@ html {
     padding: 0;
     font-family: "Times New Roman", Times, serif;
     height: 100%;
-    overflow: hidden;
+    padding-top: 80px;
 }

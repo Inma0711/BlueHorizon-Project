@@ -8,7 +8,7 @@
 
             <div class="container-button">
                 <p>"Tu viaje, nuestro horizonte"</p>
-                <button>COMENZAR</button>
+                <a href="{{ route('flightList') }}" class="btn-home">COMENZAR</a>
             </div>
         </div>
     </div>

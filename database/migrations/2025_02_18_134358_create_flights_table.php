@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('plane_id')->references('id')->on('planes')->onDelete('cascade')->onUpdate('cascade');
             $table->string('departure_location');
             $table->string('arrival_location');
+            $table->integer('price');
             $table->timestamps();
         });
     }

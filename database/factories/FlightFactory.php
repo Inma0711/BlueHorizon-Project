@@ -20,11 +20,15 @@ class FlightFactory extends Factory
 
     public function definition(): array
     {
+        $cities = ['MADRID', 'MÁLAGA', 'BARCELONA', 'NORUEGA', 'VALENCIA', 'BILBAO', 'JAPÓN', 'MÉXICO', 'LONDRES', 'FRANCIA', 'TAILANDIA'];
+    
         return [
-            'plane_id' => Plane::factory(), 
-            'date' => $this->faker->dateTimeBetween('+1 week', '+6 months')->format('Y-m-d'),
-            'departure_location' => $this->faker->city(),
-            'arrival_location' => $this->faker->city(),
+            'plane_id' => Plane::factory(),
+            'date' => $this->faker->dateTimeBetween('2025-01-01', '2025-12-31')->format('Y-m-d'),
+            'departure_location' => $this->faker->randomElement($cities), 
+            'arrival_location' => $this->faker->randomElement($cities), 
+            'price' => $this->faker->randomFloat(2, 30, 100),
         ];
     }
+    
 }
