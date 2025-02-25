@@ -11,9 +11,11 @@ When we enter the website we find the main welcome page, we can click on start a
 
 ***
 ## :eye_speech_bubble: Project overview
-![homView]()
-![estacionesView](https://github.com/user-attachments/assets/6612d745-8359-4a5f-b232-6e60094180d6)
-![showView](https://github.com/user-attachments/assets/f5e596c1-5307-4873-a91e-19c8a857eff0)
+
+![homeBlueAirline](https://github.com/user-attachments/assets/cd564260-9906-41da-9c79-9642baef613f)
+![flightList](https://github.com/user-attachments/assets/1ed522ba-1618-4c6e-bac7-053a8ea5f577)
+![login](https://github.com/user-attachments/assets/a665f2a8-5e2b-4005-95dd-3173d7a43692)
+![registrer](https://github.com/user-attachments/assets/1505c911-e89b-4247-b06f-e854522f748a)
 
 
 ***
@@ -70,65 +72,75 @@ npm run dev
 ***
 ## 📚 Database diagram
 Here we find the project diagram which is made up of a single table
-![tablaKataTollStation](https://github.com/user-attachments/assets/1a4f3321-017a-4aae-83c7-2493c8995e4c)
+![diagramBlueHorizon](https://github.com/user-attachments/assets/7c09f62e-0a37-4249-a1ce-13f4f92d5fdd)
+
 
 
 ***
 ## API Endpoints
-#### Stations
-- To view the list of toll stations
+#### Planes
+- To see the list of aircraft
 
 ```
-http://127.0.0.1:8000/api/stations
+http://localhost:8000/api/planes
 ```
-- To be able to see a toll station
+- Being able to see a plane
+```
+http://localhost:8000/api/planes/{id}
+```
+- In order to create a plane
 
 ```
-http://127.0.0.1:8000/api/stations/{id}
+http://localhost:8000/api/planes
 ```
-- In order to create a station
+- In order to delete a plane
 
 ```
-http://localhost:8000/api/stations
+http://localhost:8000/api/planes/{id}
 ```
-- In order to delete a station
+-In order to modify an aircraft
 
 ```
-http://127.0.0.1:8000/api/stations/{id}
+http://localhost:8000/api/planes/{id}
 ```
-#### Vehicles
-- To view the list of toll vehicles
+#### Flights
+- To see a list of flights
 
 ```
-http://127.0.0.1:8000/api/vehicles
+http://localhost:8000/api/flights
 ```
-- To be able to see a toll vehicle
+- To be able to see a flight
 
 ```
-http://127.0.0.1:8000/api/vehicles/{id}
+http://localhost:8000/api/flights/{id}
 ```
-- In order to create a vehicle
+- In order to create a flight
 
 ```
-http://localhost:8000/api/vehicles
+http://localhost:8000/api/flights
 ```
-- In order to delete a vehicle
+- In order to delete a flight
 
 ```
-http://127.0.0.1:8000/api/vehicles/{id}
+http://localhost:8000/api/flights/{id}
 ```
+-In order to modify an flights
 
+```
+http://localhost:8000/api/flights/{id}
+```
 
 ***
-## Test
-This project has 72,6% test coverage.
+## 👾 Test
+This project has 79% test coverage.
 
 -To test the tests and see the coverage in the terminal:
 
 ```
   php artisan test --coverage
 ```
-![testKata](https://github.com/user-attachments/assets/f4fc7639-e503-46cb-bc2c-e1c07cabef2c)
+![testBlueHorizon](https://github.com/user-attachments/assets/76ebf22c-a6be-4c56-8085-05e8d9684960)
+
 
 
 ***
@@ -144,3 +156,14 @@ This project has 72,6% test coverage.
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='phpMyAdmin' src='https://img.shields.io/badge/phpMyAdmin-100000?style=for-the-badge&logo=phpMyAdmin&logoColor=white&labelColor=6C78AF&color=6C78AF'/></a>
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='Postman' src='https://img.shields.io/badge/Postman-100000?style=for-the-badge&logo=Postman&logoColor=white&labelColor=FF6C37&color=FF6C37'/></a>
 <a href='https://github.com/shivamkapasia0' target="_blank"><img alt='XAMPP' src='https://img.shields.io/badge/XAMPP-100000?style=for-the-badge&logo=XAMPP&logoColor=white&labelColor=FB7A24&color=FB7A24'/></a>
+
+
+***
+## :bust_in_silhouette: Author
+- **Inma González**: [https://github.com/Inma0711](https://github.com/Inma0711)
+
+
+***
+## Thanks for reading!
+Have a nice day :)
+
