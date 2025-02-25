@@ -17,7 +17,13 @@
                         <div class="title-country">
                             {{ $flightList->departure_location }} - {{ $flightList->arrival_location }}
                         </div>
-                        {{ $flightList->date }}
+                        <div class="flight-date">
+                            {{ $flightList->date }}
+                        </div>
+                        <div class="flight-user">
+                            <img src="{{ asset('img/userIcon.png') }}" alt="User Icon" class="user-item">
+                            <span>{{ $flightList->plane->max_seats ?? 'No disponible' }}</span>
+                        </div>
                     </div>
                     <div class="container-flight3">
                         <div class="ctf-3-1">

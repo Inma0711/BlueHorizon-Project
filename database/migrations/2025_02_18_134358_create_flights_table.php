@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('plane_id');
-            $table->timestamp('date');
+            $table->date('date');
             $table->foreign('plane_id')->references('id')->on('planes')->onDelete('cascade')->onUpdate('cascade');
             $table->string('departure_location');
             $table->string('arrival_location');

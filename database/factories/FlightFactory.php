@@ -24,7 +24,7 @@ class FlightFactory extends Factory
     
         return [
             'plane_id' => Plane::factory(),
-            'date' => $this->faker->dateTimeBetween('2025-01-01', '2025-12-31')->format('Y-m-d'),
+            'date' => $this->faker->date('Y-m-d', '2025-12-31'),
             'departure_location' => $this->faker->randomElement($cities), 
             'arrival_location' => $this->faker->randomElement($cities), 
             'price' => $this->faker->randomFloat(2, 30, 100),
