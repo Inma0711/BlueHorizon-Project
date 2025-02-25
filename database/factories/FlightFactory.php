@@ -23,7 +23,7 @@ class FlightFactory extends Factory
         $cities = ['MADRID', 'MÁLAGA', 'BARCELONA', 'NORUEGA', 'VALENCIA', 'BILBAO', 'JAPÓN', 'MÉXICO', 'LONDRES', 'FRANCIA', 'TAILANDIA'];
     
         return [
-            'plane_id' => Plane::all()->random()->id,
+            'plane_id' => Plane::query()->inRandomOrder()->first()->id ?? Plane::factory()->create()->id,
             'date' => $this->faker->dateTimeBetween('2025-01-01', '2026-12-31')->format('Y-m-d'),
             'departure_location' => $this->faker->randomElement($cities), 
             'arrival_location' => $this->faker->randomElement($cities), 
