@@ -26,10 +26,19 @@
                             </div>
                         @endif
                     @else
+
+                
                         <div class="dropdown">
                             <img src="{{ asset('img/user.png') }}" alt="Profile" class="profile-pic">
                             <div class="dropdown-content">
-                                <a href="/mis-reservas">Mis Reservas</a>
+                                @if(Auth::check() && !Auth::user()->isAdmin)
+                                    <a href="/mis-reservas">Mis Reservas</a>
+                                    <a href="/mis-reservas">Carrito</a>
+                                @endif
+                                @if(Auth::check() && Auth::user()->isAdmin)
+                                    <a href="/mis-reservas">Vuelos</a>
+                                    <a href="/mis-reservas">Aviones</a>
+                                @endif
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Logout
@@ -39,6 +48,8 @@
                                 </form>
                             </div>
                         </div>
+
+                        
                     @endguest
                 </div>
             </ul>

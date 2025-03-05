@@ -12,5 +12,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/flightlist', [App\Http\Controllers\FlightListController::class, 'index'])->name('flightList');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/flightlist', [FlightListController::class, 'index'])->name('flightList');
