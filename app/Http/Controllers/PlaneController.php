@@ -40,51 +40,100 @@ class PlaneController extends Controller
         
     }
 
-    public function show(Plane $plane)
+    /*
+    public function search(Request $request)
     {
-        //
-    }
-
-    public function edit($id)
-    {
-        // Obtener el avión por su ID
-        $plane = Plane::findOrFail($id);
-
-        // Retornar la vista con los datos del avión
+        // Inicializamos la variable plane en null
+        $plane = null;
+    
+        // Si se ha enviado un ID de avión para buscar
+        if ($request->has('search_id')) {
+            $plane = Plane::find($request->input('search_id')); // Buscar avión por ID
+    
+            // Si no se encuentra el avión, redirige con un mensaje de error
+            if (!$plane) {
+                return redirect()->route('editAircraft')->with('error', 'Avión no encontrado');
+            }
+        }
+    
+        // Retornamos la vista con el avión encontrado (o null si no se encuentra)
         return view('editAircraft', compact('plane'));
     }
-
+    
+    
+    public function edit($id)
+    {
+        $plane = Plane::findOrFail($id);
+        return view('editAircraft', compact('plane'));
+    }
+    
+    
     public function update(Request $request, $id)
     {
-        // Validar los datos del formulario
         $validated = $request->validate([
-            'id' => 'required|integer|unique:planes,id,'.$id, // Asegura que el nuevo ID no esté en uso por otro avión
             'name' => 'required|string|max:255',
             'max_seats' => 'required|integer|min:1',
         ]);
     
-        // Obtener el avión actual
         $plane = Plane::findOrFail($id);
-    
-        // Si el usuario cambió el ID, debemos actualizarlo también
-        if ($plane->id != $validated['id']) {
-            $plane->id = $validated['id'];
-        }
-    
-        // Actualizar los otros datos del avión
         $plane->name = $validated['name'];
         $plane->max_seats = $validated['max_seats'];
-        $plane->save(); // Guardar los cambios
+        $plane->save();
     
-        // Redirigir con un mensaje de éxito
-        return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
+        return redirect()->route('editAircraft', $id)->with('success', 'Avión actualizado con éxito');
     }
-    
-
   
     public function destroy(Plane $plane)
     {
         //
     }
+    
+   */
 
+   
+   public function edit()
+   {
+       return view('editAircraft');
+   }
+
+   // Método que maneja la búsqueda del avión por ID.
+   public function search(Request $request)
+   {
+       $plane = null;
+       
+       if ($request->has('search_id')) {
+           // Buscar el avión por su ID
+           $plane = Plane::find($request->input('search_id'));
+
+           if (!$plane) {
+               // Si no se encuentra el avión, redirigir con un mensaje de error
+               return redirect()->route('editAircraft')->with('error', 'Avión no encontrado');
+           }
+       }
+
+       // Si el avión fue encontrado, mostramos el formulario con los datos del avión
+       return view('editAircraft', compact('plane'));
+   }
+
+   // Método para actualizar el avión
+   public function update(Request $request, $id)
+   {
+       // Validación de los campos
+       $validated = $request->validate([
+           'name' => 'required|string|max:255',
+           'max_seats' => 'required|integer|min:1',
+       ]);
+
+       // Buscar el avión por ID
+       $plane = Plane::findOrFail($id);
+
+       // Actualizar los campos del avión
+       $plane->name = $validated['name'];
+       $plane->max_seats = $validated['max_seats'];
+       $plane->save();
+
+       // Redirigir con un mensaje de éxito
+       return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
+   }
 }
+

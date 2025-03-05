@@ -21,5 +21,7 @@ Route::get('/listAircraftAdmin', [AircraftListAdminController::class, 'index'])-
 Route::get('/createAircraft', [PlaneController::class, 'create'])->middleware('role:admin')->name('createAircraft');
 Route::post('/createAircraft', [PlaneController::class, 'store']); 
 
-Route::get('/editAircraft/{id}', [PlaneController::class, 'edit'])->middleware('role:admin')->name('editAircraft');
-Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->middleware('role:admin'); 
+
+Route::get('/editAircraft', [PlaneController::class, 'edit'])->name('editAircraft'); // Muestra el formulario para editar el avión.
+Route::post('/editAircraft', [PlaneController::class, 'search'])->name('searchAircraft'); // Buscar el avión por ID y mostrar los resultados en el formulario.
+Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->name('updateAircraft'); // Ruta para actualizar el avión.
