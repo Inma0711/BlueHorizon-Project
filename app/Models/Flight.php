@@ -18,7 +18,14 @@ class Flight extends Model
         'departure_location',
         'arrival_location',
         'price',
+        'status',
     ];
+
+    protected $casts = [
+        'status' => 'boolean',
+    ];
+    
+
     public function plane(): BelongsTo
     {
         return $this->belongsTo(Plane::class, 'plane_id');
@@ -37,5 +44,15 @@ class Flight extends Model
     public function passengers()
     {
         return $this->hasManyThrough(User::class, Reservation::class, 'flight_id', 'id', 'id', 'user_id');
+    }
+
+    public function reserve(): void
+    {
+        $this->update(['status' => true]);
+    }
+
+    public function cancel(): void
+    {
+        $this->update(['status' => false]);
     }
 }

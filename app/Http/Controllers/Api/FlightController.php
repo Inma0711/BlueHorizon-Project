@@ -24,7 +24,10 @@ class FlightController extends Controller
             'departure_location' => 'required|string|max:255',
             'arrival_location' => 'required|string|max:255',
             'price' => 'required|integer|max:255',
+            'status' => 'sometimes|boolean',
         ]);
+
+        $validated['status'] = $validated['status'] ?? 0;
 
         $flight = Flight::create($validated);
 
@@ -56,6 +59,7 @@ class FlightController extends Controller
             'departure_location' => 'sometimes|string|max:255',
             'arrival_location' => 'sometimes|string|max:255',
             'price' => 'sometimes|integer|max:255',
+            'status' => 'sometimes|boolean'
         ]);
 
         $flight->update($validated);
@@ -74,5 +78,31 @@ class FlightController extends Controller
         $flight->delete();
 
         return response()->json(['message' => 'Vuelo eliminado correctamente'], 200);
+    }
+
+    public function reserve(string $id)
+    {
+        $flight = Flight::find($id);
+
+        if (!$flight) {
+            return response()->json(['message' => 'Vuelo no encontrado'], 404);
+        }
+
+        $flight->reserve();
+
+        return response()->json(['message' => 'Vuelo reservado correctamente', 'flight' => $flight], 200);
+    }
+
+    public function cancel(string $id)
+    {
+        $flight = Flight::find($id);
+
+        if (!$flight) {
+            return response()->json(['message' => 'Vuelo no encontrado'], 404);
+        }
+
+        $flight->cancel();
+
+        return response()->json(['message' => 'Vuelo cancelado correctamente', 'flight' => $flight], 200);
     }
 }

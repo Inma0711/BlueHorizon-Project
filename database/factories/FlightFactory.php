@@ -28,6 +28,7 @@ class FlightFactory extends Factory
             'departure_location' => $this->faker->randomElement($cities), 
             'arrival_location' => $this->faker->randomElement($cities), 
             'price' => $this->faker->randomFloat(2, 30, 100),
+            'status' => 0
         ];
     }
     
