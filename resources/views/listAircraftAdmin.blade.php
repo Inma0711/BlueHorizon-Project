@@ -6,4 +6,5 @@
 </div>
 
 <a href="createAircraft">Crear</a>
+<a href="editAircraft">Editar</a>
 @endsection

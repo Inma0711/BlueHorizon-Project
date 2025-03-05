@@ -36,8 +36,8 @@
                                     <a href="/mis-reservas">Carrito</a>
                                 @endif
                                 @if(Auth::check() && Auth::user()->isAdmin)
-                                    <a href="/mis-reservas">Vuelos</a>
                                     <a href="/listAircraftAdmin">Aviones</a>
+                                    <a href="/mis-reservas">Vuelos</a>
                                 @endif
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

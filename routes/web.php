@@ -18,5 +18,8 @@ Route::get('/flightlist', [FlightListController::class, 'index'])->name('flightL
 Route::get('/createAircraft', [PlaneController::class, 'index'])->middleware('role:admin')->name('createAircraft');
 Route::get('/listAircraftAdmin', [AircraftListAdminController::class, 'index'])->middleware('role:admin')->name('listAircraftAdmin');
 
-Route::get('/createAircraft', [PlaneController::class, 'create'])->name('createAircraft');
+Route::get('/createAircraft', [PlaneController::class, 'create'])->middleware('role:admin')->name('createAircraft');
 Route::post('/createAircraft', [PlaneController::class, 'store']); 
+
+Route::get('/editAircraft/{id}', [PlaneController::class, 'edit'])->middleware('role:admin')->name('editAircraft');
+Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->middleware('role:admin'); 
