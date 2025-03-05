@@ -2,10 +2,10 @@
 @import url(footer.css);
 @import url(flightList.css);
 @import url(planeList.css);
+@import url(planeEdit.css);
 
 :root {
     --darkAquamarine: #354e55;
-    --darkGrey: #ffffff33;
     --aquamarine: #65a2ab;
     --lightAquamarine: #b9d9dd;
     --grey: #dbdbdb;

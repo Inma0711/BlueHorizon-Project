@@ -1,37 +1,32 @@
-.container1-plane-create {
+.principal-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    flex-grow: 1;
+    gap: 30px; /* Espacio entre los formularios */
     padding: 20px;
-    margin-top: -40px;
+    box-sizing: border-box;
 }
 
-.container2-plane-create {
-    background-color: #ffffff;
-    padding: 30px;
-    width: 100%;
-    max-width: 600px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.title-create {
-    font-size: 30px;
-    color: var(--darkAquamarine);
-    font-family: "Times New Roman", Times, serif;
-    margin-bottom: 20px;
-}
-
-.form-create {
+.login-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    align-items: center;
-    padding: 1rem;
-    gap: 10px;
+    width: 100%;
+}
+
+/* Estilo general de los formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px; /* Espacio entre los formularios */
+}
+
+/* Separador entre los formularios */
+.form-divider {
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
 }
 
 .input-field {
@@ -45,7 +40,7 @@
 }
 
 .login-btn {
-    background-color: var(--aquamarine);
+    background-color: #4CAF50;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -53,20 +48,21 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
 }
 
+/* Estilo cuando el ratón pasa sobre el botón */
 .login-btn:hover {
     background-color: #45a049;
 }
 
-.success-message,
-.error-message {
+/* Mensajes de error y éxito */
+.success-message, .error-message {
     padding: 15px;
-    margin: 20px 0;
+    margin-bottom: 20px;
     border-radius: 5px;
     font-size: 16px;
     text-align: center;
+    width: 100%;
 }
 
 .success-message {
@@ -81,11 +77,14 @@
     color: #721c24;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
-    position: fixed;
+
+.container-form1, .container-form2{
+    background-color: #ffffff;
+    padding: 30px;
     width: 100%;
-    bottom: 0;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-bottom: 20px;
 }

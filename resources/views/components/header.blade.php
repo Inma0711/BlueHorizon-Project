@@ -1,13 +1,13 @@
 <header class="navbar">
     <nav class="navbar-container">
         <div class="left">
-            <a href="{{ url('/') }}">
+            <a href="{{ url('/home') }}">
                 <img src="{{ asset('img/logoWeb.png') }}" alt="Logo" class="logo-web">
             </a>
         </div>
 
         <ul class="navbar-item">
-            <li><a class="menu-link" href="{{ url('/flights') }}">Vuelos</a></li>
+            <li><a class="menu-link" >Vuelos</a></li>
         </ul>
 
         <div class="right login">

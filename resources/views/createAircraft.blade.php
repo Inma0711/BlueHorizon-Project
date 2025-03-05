@@ -2,19 +2,27 @@
 
 @section('content')
 
-<div class="principal-container">
-    <div class="login-container">
-        <h2>Crear avión</h2>
+<div class="container1-plane-create">
+    <div class="container2-plane-create">
+        <h2 class="title-create">Crear avión</h2>
 
-        {{-- Mensaje de éxito (verde) --}}
         @if (session('success'))
             <div class="success-message">
                 <p>{{ session('success') }}</p>
             </div>
         @endif
 
-        {{-- Formulario de creación de avión --}}
-        <form action="{{ url('/createAircraft') }}" method="POST">
+        @if ($errors->any())
+        <div class="error-message">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+        <form action="{{ url('/createAircraft') }}" method="POST" class="form-create">
             @csrf
             <div>
                 <label for="name">Nombre del avión:</label>
@@ -29,20 +37,7 @@
             </div>
         </form>
 
-        {{-- Mensaje de error --}}
-        @if ($errors->any())
-            <div class="error-message">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
-        <div class="form-divider">
-            <span>O prueba otra acción</span>
-        </div>
     </div>
 </div>
 @endsection
