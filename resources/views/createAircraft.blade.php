@@ -2,11 +2,14 @@
 
 @section('content')
 
-<form action="{{ url('/aircraftForm') }}" method="POST">
+<div class="principal-container">
+    <div class="login-container"> 
+
+<form action="{{ url('/createAircraft') }}" method="POST">
     @csrf
     <div>
         <label for="name">Nombre del avión:</label>
-        <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+        <input type="text" id="name" name="name" class="input-field"  value="{{ old('name') }}" required>
     </div>
     <div>
         <label for="max_seats">Número máximo de asientos:</label>
@@ -22,5 +25,8 @@
     <p>{{ session('success') }}</p>
 </div>
 @endif
+    </div>
+</div>
+
 
 @endsection

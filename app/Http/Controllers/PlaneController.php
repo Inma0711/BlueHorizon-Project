@@ -15,12 +15,12 @@ class PlaneController extends Controller
 
     public function index()
     {
-        return view('aircraftForm');
+        return view('createAircraft');
     }
 
     public function create()
     {
-        return view('aircraftForm');  
+        return view('createAircraft');  
 
     }
 
@@ -36,7 +36,7 @@ class PlaneController extends Controller
             'max_seats' => $validated['max_seats'],
         ]);
 
-        return redirect()->route('aircraftForm')->with('success', 'Avión creado con éxito');
+        return redirect()->route('createAircraft')->with('success', 'Avión creado con éxito');
         
     }
 
