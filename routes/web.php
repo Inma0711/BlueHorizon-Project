@@ -14,3 +14,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/flightlist', [FlightListController::class, 'index'])->name('flightList');
+Route::get('/aircraftForm', [PlaneController::class, 'index'])->middleware('role:admin')->name('aircraftForm');
+
+Route::get('/aircraftForm', [PlaneController::class, 'create'])->name('aircraftForm');
+Route::post('/aircraftForm', [PlaneController::class, 'store']); 
