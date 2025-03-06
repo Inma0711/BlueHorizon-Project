@@ -1,32 +1,24 @@
-.principal-container {
+.container1-plane-edit {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 30px; /* Espacio entre los formularios */
     padding: 20px;
     box-sizing: border-box;
+    margin-top: -30px;
 }
 
-.login-container {
+.container2-plane-edit {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    width: 40%; 
 }
 
-/* Estilo general de los formularios */
 form {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-bottom: 20px; /* Espacio entre los formularios */
-}
-
-/* Separador entre los formularios */
-.form-divider {
-    margin: 20px 0;
-    text-align: center;
-    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 .input-field {
@@ -40,7 +32,7 @@ form {
 }
 
 .login-btn {
-    background-color: #4CAF50;
+    background-color: var(--aquamarine);
     color: white;
     padding: 12px 25px;
     border: none;
@@ -50,19 +42,17 @@ form {
     transition: background-color 0.3s ease;
 }
 
-/* Estilo cuando el ratón pasa sobre el botón */
 .login-btn:hover {
     background-color: #45a049;
 }
 
-/* Mensajes de error y éxito */
 .success-message, .error-message {
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
     font-size: 16px;
     text-align: center;
-    width: 100%;
+    width: 84%;
 }
 
 .success-message {
@@ -77,14 +67,20 @@ form {
     color: #721c24;
 }
 
-
 .container-form1, .container-form2{
     background-color: #ffffff;
     padding: 30px;
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
+
+}
+
+.title-edit{
+    font-size: 30px;
+    color: var(--darkAquamarine);
+    font-family: "Times New Roman", Times, serif;
     margin-bottom: 20px;
 }

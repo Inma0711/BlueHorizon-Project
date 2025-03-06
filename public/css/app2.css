@@ -1,7 +1,7 @@
 @import url(header2.css);
 @import url(footer.css);
 @import url(flightList.css);
-@import url(planeList.css);
+@import url(planeCreate.css);
 @import url(planeEdit.css);
 
 :root {

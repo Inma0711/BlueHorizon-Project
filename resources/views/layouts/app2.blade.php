@@ -18,4 +18,5 @@
             <x-footer />
         </div>
     </body>
+    <script src="{{ asset('js/editAircraft.js') }}"></script>
 </html>

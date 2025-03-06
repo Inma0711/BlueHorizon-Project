@@ -68,22 +68,28 @@ class PlaneController extends Controller
 }
 
 
+public function update(Request $request, $id)
+{
+    // Verificar si el avión existe
+    $plane = Plane::find($id);
+    if (!$plane) {
+        return redirect()->route('editAircraft')->with('error', 'Debe buscar un ID válido antes de editar.');
+    }
 
-   public function update(Request $request, $id)
-   {
-     
-       $validated = $request->validate([
-           'name' => 'required|string|max:255',
-           'max_seats' => 'required|integer|min:1',
-       ]);
+    // Validar datos
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'max_seats' => 'required|integer|min:1|max:300',
+    ]);
 
-       $plane = Plane::findOrFail($id);
+    // Actualizar avión
+    $plane->update($validated);
 
-       $plane->name = $validated['name'];
-       $plane->max_seats = $validated['max_seats'];
-       $plane->save();
-  
-       return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
-   }
+    return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
+}
+
+
+
+
 }
 
