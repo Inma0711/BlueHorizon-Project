@@ -16,6 +16,7 @@
 
         <div class="plane-list">
             @foreach ($planes as $plane)
+            <div class="prueba">
                 <div class="item-plane">
                     <div class="container-form">
                         <img src="{{ asset('img/planeItem.png') }}" alt="Plane" class="plane-item">
@@ -27,12 +28,13 @@
                         <span class="plane-name"><strong>Asientos:</strong> {{ $plane->max_seats }}</span>
                     </div>
                 </div>
+                <div class="button-delete-container">
+                    <button class="button-delete">
+                        <img src="{{ asset('img/deleteItem.png') }}" alt="Eliminar" class="trash-icon">
+                    </button>
+                </div>
+            </div>
             @endforeach
-        </div>
-        <div class="button-delete-container">
-            <button class="button-delete">
-                <img src="{{ asset('img/trash.png') }}" alt="Eliminar" class="trash-icon">
-            </button>
         </div>
     @endif
     </div>

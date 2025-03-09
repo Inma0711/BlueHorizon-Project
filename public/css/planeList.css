@@ -15,31 +15,35 @@
 
 .item-plane {
     display: flex;
+    flex-grow: 1;
     justify-content: center;
     align-items: center;
     background-color: #f1f1f1;
     padding: 3rem;
     border-radius: 1rem;
     width: 30%;
+    gap: 40px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.container-form{
+.container-form {
     display: flex;
-    align-items: center; 
-    gap: 20px; 
+    width: 200px;
+    gap: 20px;
     padding: 1rem;
     margin-top: 10px;
 }
 
 .plane-item {
-    width: 30px;
-    height: auto; 
+    width: 50px;
+    height: 50px;
 }
 
 .plane-name {
-    font-size: 20px; 
-    color: #354e55; 
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    color: #354e55;
 }
 
 .plane-name strong {
@@ -54,7 +58,7 @@
 }
 
 .button-option a {
-    background-color: var(--aquamarine); 
+    background-color: var(--aquamarine);
     color: var(--white);
     padding: 10px 20px;
     text-decoration: none;
@@ -62,17 +66,40 @@
     text-align: center;
     font-size: 16px;
     transition: background-color 0.3s ease;
-    
 }
 
 .button-option a:hover {
-    background-color: var(--darkAquamarine); 
+    background-color: var(--darkAquamarine);
 }
 
 .flight-list {
     margin-top: 20px;
 }
 
+.prueba {
+    display: flex;
+    gap: 10px;
+}
+
 .button-delete-container {
-    
+    align-self: flex-start;
+}
+
+.button-delete {
+    background-color: #de0f3f;
+    border: none;
+    width: 50px;
+    padding: 10px;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.button-delete:hover {
+    transform: scale(1.1);
+}
+
+.trash-icon {
+    width: 20px;
+    height: auto;
 }
