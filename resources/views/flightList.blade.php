@@ -1,7 +1,7 @@
 @extends('layouts.app2')
 
 @section('content')
-    <div class="container-home">
+    <!--<div class="container-home">-->
         <div class="container-title">
             <h1 class="title-flight">VUELOS DISPONIBLES</h1>
         </div>
@@ -39,6 +39,5 @@
                 </div>
             @endforeach
         </div>
-
-    </div>
+    <!--</div>-->
 @endsection

@@ -3,6 +3,7 @@
 @import url(flightList.css);
 @import url(planeCreate.css);
 @import url(planeEdit.css);
+@import url(planeList.css);
 
 :root {
     --darkAquamarine: #354e55;
@@ -22,3 +23,13 @@ html {
     height: 100%;
     padding-top: 80px;
 }
+
+/*footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+    */

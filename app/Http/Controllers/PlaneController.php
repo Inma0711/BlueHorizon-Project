@@ -19,6 +19,12 @@ class PlaneController extends Controller
         return view('createAircraft');
     }
 
+    public function adminIndex()
+    {
+        $planes = Plane::all(); 
+        return view('listAircraftAdmin', compact('planes')); 
+    }
+
 
     public function create()
     {
@@ -87,9 +93,5 @@ public function update(Request $request, $id)
 
     return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
 }
-
-
-
-
 }
 

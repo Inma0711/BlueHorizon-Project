@@ -81,12 +81,3 @@
     border: 1px solid #f5c6cb;
     color: #721c24;
 }
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
