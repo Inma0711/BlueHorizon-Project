@@ -1,0 +1,34 @@
+.title-plane {
+    font-size: 50px;
+    font-family: "Times New Roman", Times, serif;
+    color: var(--darkAquamarine);
+    font-weight: none;
+    text-align: center;
+}
+
+.button-option {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.button-option a {
+    background-color: var(--aquamarine); 
+    color: var(--white);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.button-option a:hover {
+    background-color: var(--darkAquamarine); 
+}
+
+.flight-list {
+    margin-top: 20px;
+}
+
