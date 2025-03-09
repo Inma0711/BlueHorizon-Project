@@ -33,7 +33,7 @@ class PlaneController extends Controller
 
     public function store(Request $request)
     {
-        // Validación de los datos del formulario
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'max_seats' => 'required|integer|min:1',
@@ -75,21 +75,33 @@ class PlaneController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Verificar si el avión existe
         $plane = Plane::find($id);
         if (!$plane) {
             return redirect()->route('editAircraft')->with('error', 'Debe buscar un ID válido antes de editar.');
         }
 
-        // Validar datos
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'max_seats' => 'required|integer|min:1|max:300',
         ]);
 
-        // Actualizar avión
+
         $plane->update($validated);
 
         return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
     }
+
+    public function destroy($id)
+    {
+        $plane = Plane::find($id);
+    
+        if ($plane) {
+            $plane->delete();
+            return redirect()->route('planeList')->with('success', 'Avión eliminado correctamente');
+        } else {
+            return redirect()->route('planeList')->with('error', 'Avión no encontrado');
+        }
+    }
+    
+    
 }

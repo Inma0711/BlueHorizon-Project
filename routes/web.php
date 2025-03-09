@@ -23,3 +23,4 @@ Route::post('/createAircraft', [PlaneController::class, 'store']);
 Route::get('/editAircraft', [PlaneController::class, 'edit'])->name('editAircraft');  
 Route::post('/searchAircraft', [PlaneController::class, 'search'])->name('searchAircraft');  
 Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->name('updateAircraft'); 
+Route::delete('/deleteAircraft/{id}', [PlaneController::class, 'destroy'])->name('deleteAircraft');
