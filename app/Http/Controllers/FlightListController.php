@@ -12,7 +12,7 @@ class FlightListController extends Controller
      */
     public function index()
     {
-        $flightLists = Flight::all(); // Obtiene todas las estaciones de la base de datos
+        $flightLists = Flight::all(); 
         return view('flightList', compact('flightLists')); 
     }
 
