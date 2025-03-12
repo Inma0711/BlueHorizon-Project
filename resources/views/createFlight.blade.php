@@ -25,16 +25,8 @@
         <form action="{{ url('/createFlight') }}" method="POST" class="form-create">
             @csrf
             <div>
-                <label for="plane_id">Selecciona un avión:</label>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <input type="number" id="plane_id" name="plane_id" class="input-field" value="{{ old('plane_id') }}" min="1" required>
-                    <select id="plane_list" class="input-field" onchange="document.getElementById('plane_id').value = this.value;">
-                        <option value="">Aviones disponibles</option>
-                        @foreach ($planes as $plane)
-                            <option value="{{ $plane->id }}">{{ $plane->id }} - {{ $plane->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                <label for="plane_id">ID del avión:</label>
+                <input type="number" id="plane_id" name="plane_id" class="input-field" value="{{ old('plane_id') }}" min="1" required>
             </div>
             <div>
                 <label for="date">Fecha del vuelo:</label>
@@ -42,19 +34,11 @@
             </div>
             <div>
                 <label for="departure_location">Ubicación de salida:</label>
-                <input type="text" id="departure_location" name="departure_location" class="input-field" 
-                       value="{{ old('departure_location') }}" required 
-                       pattern="[A-Z\s]+" 
-                       title="Solo se permiten letras mayúsculas y espacios" 
-                       oninput="this.value = this.value.toUpperCase();">
+                <input type="text" id="departure_location" name="departure_location" class="input-field" value="{{ old('departure_location') }}" required>
             </div>
             <div>
                 <label for="arrival_location">Ubicación de destino:</label>
-                <input type="text" id="arrival_location" name="arrival_location" class="input-field" 
-                       value="{{ old('arrival_location') }}" required 
-                       pattern="[A-Z\s]+" 
-                       title="Solo se permiten letras mayúsculas y espacios" 
-                       oninput="this.value = this.value.toUpperCase();">
+                <input type="text" id="arrival_location" name="arrival_location" class="input-field" value="{{ old('arrival_location') }}" required>
             </div>
             <div>
                 <label for="price">Precio:</label>

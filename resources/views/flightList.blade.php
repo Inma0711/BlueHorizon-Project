@@ -6,6 +6,13 @@
             <h1 class="title-flight">VUELOS DISPONIBLES</h1>
         </div>
 
+        @if(Auth::check() && Auth::user()->isAdmin)
+        <div class="mb-3">
+            <a href="{{ route('createFlight') }}" class="btn btn-success">Crear</a>
+            <a href="{{ route('editFlight') }}" class="btn btn-success">Editar</a>
+        </div>
+        @endif
+
         <div class="flight-list">
             @foreach ($flightLists as $flightList)
                 <div class="item">
