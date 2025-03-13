@@ -15,6 +15,7 @@
 
     <div class="flight-list">
         @foreach ($flightLists as $flightList)
+        @if ($flightList->status)
         <div class="item-flight">
             <div class="item">
                 <div class="container-flight1">
@@ -63,6 +64,7 @@
             @endif
             
         </div>
+        @endif 
         @endforeach
     </div>
     <!--</div>-->
