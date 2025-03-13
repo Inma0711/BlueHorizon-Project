@@ -1,3 +1,14 @@
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".delete-form").forEach(function(form) {
+        form.addEventListener("submit", function(event) {
+            if (!confirm("¿Estás seguro de que deseas eliminar este vuelo?")) {
+                event.preventDefault(); 
+            }
+        });
+    });
+});
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const editForm = document.getElementById("edit-form");
     const searchForm = document.getElementById("search-form");

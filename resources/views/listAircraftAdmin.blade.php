@@ -29,9 +29,9 @@
                         </div>
                     </div>
 
-                    <div class="button-delete-container">
+                    <div class="button-delete-container" id="delete">
                         <form action="{{ route('deleteAircraft', $plane->id) }}" method="POST"
-                            style="display:inline-block;">
+                            style="display:inline-block;" class="delete-form">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="button-delete">

@@ -35,3 +35,4 @@ Route::post('/createFlight', [FlightListController::class, 'store']);
 Route::get('/editFlight', [FlightListController::class, 'edit'])->name('editFlight');  
 Route::post('/searchFlight', [FlightListController::class, 'search'])->name('searchFlight');  
 Route::put('/editFlight/{id}', [FlightListController::class, 'update'])->name('updateFlight'); 
+Route::delete('/deleteFlight/{id}', [FlightListController::class, 'destroy'])->name('deleteFlight');

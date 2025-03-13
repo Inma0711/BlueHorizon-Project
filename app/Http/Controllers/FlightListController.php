@@ -92,11 +92,19 @@ class FlightListController extends Controller
         }
         return view('editFlight', compact('flight'));
     }
-    /*
-   
-    public function destroy(string $id)
+
+
+    public function destroy($id)
     {
-        //
+    $flight = Flight::find($id);
+
+    if (!$flight) {
+        return redirect()->route('flightList')->with('error', 'Vuelo no encontrado');
     }
-        */
+
+    $flight->delete();
+
+    return redirect()->route('flightList')->with('success', 'Vuelo eliminado con éxito');
+}
+
 }
