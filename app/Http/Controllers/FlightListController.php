@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class FlightListController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $flightLists = Flight::all();
@@ -27,30 +25,41 @@ class FlightListController extends Controller
     {
         $validated = $request->validate([
             'plane_id' => 'required|exists:planes,id',
-            'date' => 'required|date',
-            'departure_location' => 'required|string|max:255',
-            'arrival_location' => 'required|string|max:255',
+            'date' => 'required|date|after_or_equal:today',
+            'departure_location' => ['required', 'string', 'max:255', 'regex:/^[A-Z\s]+$/'],
+            'arrival_location' => ['required', 'string', 'max:255', 'regex:/^[A-Z\s]+$/'],
             'price' => 'required|integer|min:0',
-            'status' => 'required|boolean',
+        ], [
+            'date.after_or_equal' => 'No puedes crear un vuelo con fecha pasada.',
         ]);
+
+        $validated['departure_location'] = strtoupper($validated['departure_location']);
+        $validated['arrival_location'] = strtoupper($validated['arrival_location']);
+        $validated['status'] = true;
 
         Flight::create($validated);
 
         return redirect()->route('createFlight')->with('success', 'Vuelo creado con éxito');
     }
-    public function edit(Request $request)
-    {
-        $flight = null;
-        if ($request->has('search_id')) {
-            $flight = Flight::find($request->input('search_id'));
 
-            if (!$flight) {
-                return redirect()->route('editFlight')->with('error', 'Vuelo no encontrado');
-            }
+
+    public function edit(Request $request)
+{
+    $flights = Flight::all();
+    $planes = Plane::all();
+    $selectedFlight = null;
+
+    if ($request->has('search_id')) {
+        $selectedFlight = Flight::find($request->input('search_id'));
+
+        if (!$selectedFlight) {
+            return redirect()->route('editFlight')->with('error', 'Vuelo no encontrado');
         }
-        $planes = Plane::all();
-        return view('editFlight', compact('flight', 'planes'));
     }
+
+    return view('editFlight', compact('flights', 'planes', 'selectedFlight'));
+}
+
 
     public function update(Request $request, $id)
     {
@@ -61,11 +70,10 @@ class FlightListController extends Controller
 
         $validated = $request->validate([
             'plane_id' => 'required|exists:planes,id',
-            'date' => 'required|date',
-            'departure_location' => 'required|string|max:255',
-            'arrival_location' => 'required|string|max:255',
+            'date' => 'required|date|after_or_equal:today',
+            'departure_location' => ['required', 'string', 'max:255', 'regex:/^[A-Z\s]+$/'],
+            'arrival_location' => ['required', 'string', 'max:255', 'regex:/^[A-Z\s]+$/'],
             'price' => 'required|integer|min:0',
-            'status' => 'required|boolean',
         ]);
 
         $flight->update($validated);

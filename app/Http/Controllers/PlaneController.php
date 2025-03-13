@@ -50,10 +50,23 @@ class PlaneController extends Controller
     }
 
 
-    public function edit()
+    public function edit(Request $request)
     {
-        return view('editAircraft');
+        $plane = null;
+        
+        if ($request->has('search_id')) {
+            $plane = Plane::find($request->input('search_id'));
+    
+            if (!$plane) {
+                return redirect()->route('editAircraft')->with('error', 'Avión no encontrado');
+            }
+        }
+    
+        $planes = Plane::all(); 
+    
+        return view('editAircraft', compact('plane', 'planes'));
     }
+    
 
 
     public function search(Request $request)
