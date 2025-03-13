@@ -40,11 +40,16 @@
                     <div class="ctf-3-2">
                         {{ $flightList->arrival_location }}
                     </div>
-                    <div class="ctf-3-3">
-                        {{ $flightList->price }}€
-                    </div>
+                    <form action="{{ route('reserveFlight', $flightList->id) }}" method="POST" class="reservation-form">
+                        @csrf
+                        <button type="submit" class="ctf-3-3">
+                            {{ $flightList->price }}€
+                        </button>
+                    </form>
                 </div>
             </div>
+
+            
             @if (Auth::check() && Auth::user()->isAdmin)
             <div class="button-delete-container">
                 <form action="{{ route('deleteFlight', $flightList->id) }}" method="POST" class="delete-form">

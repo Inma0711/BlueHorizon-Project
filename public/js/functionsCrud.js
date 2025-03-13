@@ -46,3 +46,17 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll(".reservation-form").forEach(form => {
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            let confirmacion = confirm("¿Estás seguro de que quieres reservar este vuelo?");
+            if (confirmacion) {
+                this.submit(); 
+            }
+        });
+    });
+});

@@ -6,14 +6,6 @@
     text-align: center;
 }
 
-.flight-list {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 70px;
-}
-
 .item-flight{
     display: flex;
     flex-direction: row;   
@@ -29,26 +21,6 @@
     width: 50%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     min-width: 60%;
-}
-
-.button-delete-container {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-}
-
-.button-delete {
-    background-color: #de0f3f;
-    border: none;
-    width: 50px;
-    padding: 10px;
-    border-radius: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.button-delete:hover {
-    transform: scale(1.1);
 }
 
 .item:hover {
