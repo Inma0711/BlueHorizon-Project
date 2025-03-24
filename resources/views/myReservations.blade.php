@@ -7,33 +7,33 @@
     </div>
 
     <div class="button-option">
-        <button class="button-option">Futuras</button>
-        <button class="button-option">Pasadas</button>
+        <button class="button-option" id="btn-future">Futuras</button>
+        <button class="button-option" id="btn-past">Pasadas</button>
     </div>
 
-    <div id="future" class="reservations-container">
-        <h2>Future Reservations</h2>
+    <div id="future-reservations" class="reservations-container">
+        <h2>Futuras Reservas</h2>
         @foreach ($futureReservations as $futureReservation)
             <div class="reserva">
-                <p><strong>Passenger:</strong> {{ $futureReservation->user->name }}</p>
-                <p><strong>Departure:</strong> {{ $futureReservation->flight->departure_location }}</p>
-                <p><strong>Destination:</strong> {{ $futureReservation->flight->arrival_location }}</p>
-                <p><strong>Plane:</strong> {{ $futureReservation->flight->plane->name }}</p>
-                <p><strong>Date:</strong> {{ $futureReservation->flight->date }}</p>
+                <p><strong>Pasajero:</strong> {{ $futureReservation->user->name }}</p>
+                <p><strong>Salida:</strong> {{ $futureReservation->flight->departure_location }}</p>
+                <p><strong>Destino:</strong> {{ $futureReservation->flight->arrival_location }}</p>
+                <p><strong>Avión:</strong> {{ $futureReservation->flight->plane->name }}</p>
+                <p><strong>Fecha:</strong> {{ $futureReservation->flight->date }}</p>
                 <button class="delete-btn" data-id="{{ $futureReservation->id }}">Delete</button>
             </div>
         @endforeach
     </div>
     
-    <div id="past" class="reservations-container">
-        <h2>Past Reservations</h2>
+    <div id="past-reservations" class="reservations-container" style="display: none;">
+        <h2>Reservas Pasadas</h2>
         @foreach ($pastReservations as $pastReservation)
             <div class="reserva">
-                <p><strong>Passenger:</strong> {{ $pastReservation->user->name }}</p>
-                <p><strong>Departure:</strong> {{ $pastReservation->flight->departure_location }}</p>
-                <p><strong>Destination:</strong> {{ $pastReservation->flight->arrival_location }}</p>
-                <p><strong>Plane:</strong> {{ $pastReservation->flight->plane->name }}</p>
-                <p><strong>Date:</strong> {{ $pastReservation->flight->date }}</p>
+                <p><strong>Pasajero:</strong> {{ $pastReservation->user->name }}</p>
+                <p><strong>Salida:</strong> {{ $pastReservation->flight->departure_location }}</p>
+                <p><strong>Destino:</strong> {{ $pastReservation->flight->arrival_location }}</p>
+                <p><strong>Avión:</strong> {{ $pastReservation->flight->plane->name }}</p>
+                <p><strong>Fecha:</strong> {{ $pastReservation->flight->date }}</p>
             </div>
         @endforeach
     </div>

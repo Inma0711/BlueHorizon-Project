@@ -121,7 +121,7 @@ class UserReservationController extends Controller
             $flight = $reservation->flight;
         
             if ($flight && $flight->plane) {
-                // Restaurar el asiento
+                
                 $flight->plane->increment('max_seats');
             }
         

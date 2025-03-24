@@ -4,6 +4,7 @@
 @import url(planeCreate.css);
 @import url(planeEdit.css);
 @import url(planeList.css);
+@import url(reserves.css);
 
 :root {
     --darkAquamarine: #354e55;
