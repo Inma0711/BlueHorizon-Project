@@ -31,8 +31,7 @@
                             <img src="{{ asset('img/user.png') }}" alt="Profile" class="profile-pic">
                             <div class="dropdown-content">
                                 @if(Auth::check() && !Auth::user()->isAdmin)
-                                    <a href="/mis-reservas">Mis Reservas</a>
-                                    <a href="/mis-reservas">Carrito</a>
+                                <a href="{{ route('myReservations') }}">Mis Reservas</a>
                                 @endif
                                 @if(Auth::check() && Auth::user()->isAdmin)
                                     <a href="/listAircraftAdmin">Aviones</a>
@@ -40,7 +39,7 @@
                                 @endif
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Logout
+                                    Cerrar Sesión
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf

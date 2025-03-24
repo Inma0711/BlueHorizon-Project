@@ -38,3 +38,4 @@ Route::put('/editFlight/{id}', [FlightListController::class, 'update'])->name('u
 Route::delete('/deleteFlight/{id}', [FlightListController::class, 'destroy'])->name('deleteFlight');
 
 Route::post('/reserve-flight/{flight}', [UserReservationController::class, 'store'])->name('reserveFlight');
+Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');

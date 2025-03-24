@@ -60,7 +60,6 @@ class User extends Authenticatable
         return $this->hasManyThrough(Flight::class, Reservation::class, 'user_id', 'id', 'id', 'flight_id');
     }
 
-    // Obtener solo las reservas activas (futuras)
     public function activeReservations(): HasMany
     {
         return $this->hasMany(Reservation::class, 'user_id')->whereHas('flight', function ($query) {
@@ -68,7 +67,6 @@ class User extends Authenticatable
         });
     }
 
-    // Obtener solo las reservas pasadas
     public function pastReservations(): HasMany
     {
         return $this->hasMany(Reservation::class, 'user_id')->whereHas('flight', function ($query) {
@@ -76,7 +74,6 @@ class User extends Authenticatable
         });
     }
 
-    // Verificar si el usuario tiene una reserva en un vuelo específico
     public function hasReservationForFlight($flightId): bool
     {
         return $this->reservations()->where('flight_id', $flightId)->exists();
