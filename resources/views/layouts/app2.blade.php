@@ -19,5 +19,5 @@
         </div>
     </body>
     <script src="{{ asset('js/functionsCrud.js') }}"></script>
-
+    <script src="{{ asset('js/dateTicketFunction.js') }}"></script>
 </html>
