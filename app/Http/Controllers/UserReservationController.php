@@ -75,11 +75,6 @@ class UserReservationController extends Controller
         return view('myReservations', compact('futureReservations', 'pastReservations'));
     }
 
-
-
-
-
-
     /*
     public function create()
     {
