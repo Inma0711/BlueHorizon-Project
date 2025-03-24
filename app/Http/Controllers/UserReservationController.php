@@ -60,24 +60,24 @@ class UserReservationController extends Controller
 
         return redirect()->back()->with('success', '¡Reserva realizada con éxito!');
     }
-    
+
     public function indexUser()
     {
         if (!Auth::check()) {
             return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus reservas.');
         }
-    
+
         $user = Auth::user();
-    
-        $futuras = $user->activeReservations()->with('flight.plane')->get();
-        $pasadas = $user->pastReservations()->with('flight.plane')->get();
-    
-        return view('myReservations', compact('futuras', 'pasadas'));
+
+        $futureReservations = $user->activeReservations()->with('flight.plane')->get();
+        $pastReservations = $user->pastReservations()->with('flight.plane')->get();
+
+        return view('myReservations', compact('futureReservations', 'pastReservations'));
     }
-    
-    
-    
-    
+
+
+
+
 
 
     /*
@@ -108,10 +108,26 @@ class UserReservationController extends Controller
         //
     }
 
-    
-    public function destroy(string $id)
-    {
-        //
-    }
         */
+
+        public function destroy($id)
+        {
+            $reservation = Reservation::find($id);
+        
+            if (!$reservation) {
+                return response()->json(['error' => 'Reservation not found'], 404);
+            }
+        
+            $flight = $reservation->flight;
+        
+            if ($flight && $flight->plane) {
+                // Restaurar el asiento
+                $flight->plane->increment('max_seats');
+            }
+        
+            $reservation->delete();
+        
+            return response()->json(['success' => 'Reservation deleted successfully']);
+        }
+        
 }
