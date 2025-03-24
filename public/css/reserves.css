@@ -60,7 +60,14 @@
     gap: 20px;
 }
 
-.reserva {
+
+.show-reservations {
+    display: flex !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reservation {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -68,11 +75,27 @@
     width: 80%;
     max-width: 500px;
     margin-bottom: 20px;
-    text-align: center;
+    text-align: left; 
+    display: flex;
+    flex-direction: column;
+    position: relative; 
 }
 
-.show-reservations {
-    display: flex !important;
-    opacity: 1;
-    transform: translateY(0);
+.delete-btn {
+    background-color: #de0f3f;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #c00d36;
+    transform: scale(1.1);
 }
