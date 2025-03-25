@@ -17,16 +17,21 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/createAircraft', [PlaneController::class, 'create'])->middleware('role:admin')->name('createAircraft');
-Route::post('/createAircraft', [PlaneController::class, 'store']); 
+Route::middleware('auth')->get('/createAircraft', [PlaneController::class, 'index'])->name('createAircraft');
+Route::middleware('auth')->post('/storeAircraft', [PlaneController::class, 'store'])->name('storeAircraft');
 Route::get('/editAircraft', [PlaneController::class, 'edit'])->name('editAircraft');  
 Route::post('/searchAircraft', [PlaneController::class, 'search'])->name('searchAircraft');  
 Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->name('updateAircraft'); 
 Route::delete('/deleteAircraft/{id}', [PlaneController::class, 'destroy'])->name('deleteAircraft');
+Route::get('/listAircraft', [PlaneController::class, 'adminIndex'])->name('planeList');
 
 Route::get('/userReservation', [UserReservationController::class, 'indexAdmin'])->middleware('role:admin')->name('userReservation');
 Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');
-Route::get('/listAircraftAdmin', [PlaneController::class, 'adminIndex'])->name('planeList');
+Route::middleware('auth')->get('/listAircraftAdmin', [PlaneController::class, 'adminIndex'])->name('listAircraftAdmin');
+Route::post('/reserve-flight/{flight}', [UserReservationController::class, 'store'])->name('reserveFlight');
+Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');
+Route::delete('/reservations/{id}', [UserReservationController::class, 'destroy'])->name('reservationsDestroy');
+Route::get('/userReservation', [UserReservationController::class, 'indexAdmin'])->middleware('role:admin')->name('userReservation');
 
 Route::get('/flightList', [FlightListController::class, 'index'])->name('flightList');
 Route::get('/createFlight', [FlightListController::class, 'create'])->middleware('role:admin')->name('createFlight');
@@ -36,8 +41,3 @@ Route::post('/searchFlight', [FlightListController::class, 'search'])->name('sea
 Route::put('/editFlight/{id}', [FlightListController::class, 'update'])->name('updateFlight'); 
 Route::delete('/deleteFlight/{id}', [FlightListController::class, 'destroy'])->name('deleteFlight');
 
-Route::post('/reserve-flight/{flight}', [UserReservationController::class, 'store'])->name('reserveFlight');
-Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');
-Route::delete('/reservations/{id}', [UserReservationController::class, 'destroy'])->name('reservationsDestroy');
-
-Route::get('/userReservation', [UserReservationController::class, 'indexAdmin'])->middleware('role:admin')->name('userReservation');
