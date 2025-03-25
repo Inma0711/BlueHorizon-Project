@@ -40,3 +40,5 @@ Route::delete('/deleteFlight/{id}', [FlightListController::class, 'destroy'])->n
 Route::post('/reserve-flight/{flight}', [UserReservationController::class, 'store'])->name('reserveFlight');
 Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');
 Route::delete('/reservations/{id}', [UserReservationController::class, 'destroy'])->name('reservationsDestroy');
+
+Route::get('/userReservation', [UserReservationController::class, 'indexAdmin'])->middleware('role:admin')->name('userReservation');

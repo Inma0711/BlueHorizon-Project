@@ -14,9 +14,12 @@ class UserReservationController extends Controller
 
     public function indexAdmin()
     {
-        $users = User::with('reservations.flight')->get();
+        // Obtener todos los usuarios con sus reservas activas
+        $users = User::with(['reservations.flight', 'activeReservations.flight'])->get();
+
         return view('reserveListAdmin', compact('users'));
     }
+
 
 
     public function store($flight_id)
@@ -75,6 +78,22 @@ class UserReservationController extends Controller
         return view('myReservations', compact('futureReservations', 'pastReservations'));
     }
 
+
+    public function activeReservationsIndex()
+    {
+
+        if (Auth::user()->isAdmin) {
+            return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus reservas.');
+        }
+
+        $user = Auth::user();
+
+        $activeReservations = $user->activeReservations()->with('flight')->get();
+
+        return view('activeReservations', compact('activeReservations'));
+    }
+
+
     /*
     public function create()
     {
@@ -105,24 +124,23 @@ class UserReservationController extends Controller
 
         */
 
-        public function destroy($id)
-        {
-            $reservation = Reservation::find($id);
-        
-            if (!$reservation) {
-                return response()->json(['error' => 'Reservation not found'], 404);
-            }
-        
-            $flight = $reservation->flight;
-        
-            if ($flight && $flight->plane) {
-                
-                $flight->plane->increment('max_seats');
-            }
-        
-            $reservation->delete();
-        
-            return response()->json(['success' => 'Reservation deleted successfully']);
+    public function destroy($id)
+    {
+        $reservation = Reservation::find($id);
+
+        if (!$reservation) {
+            return response()->json(['error' => 'Reservation not found'], 404);
         }
-        
+
+        $flight = $reservation->flight;
+
+        if ($flight && $flight->plane) {
+
+            $flight->plane->increment('max_seats');
+        }
+
+        $reservation->delete();
+
+        return response()->json(['success' => 'Reservation deleted successfully']);
+    }
 }

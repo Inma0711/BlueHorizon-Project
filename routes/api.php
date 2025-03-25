@@ -13,8 +13,9 @@ Route::get('/user', function (Request $request) {
 */
 
 //Route::middleware('auth:sanctum')->group(function () {});
-    Route::post('/planes', [PlaneController::class, 'store'])->name('planeStore'); 
     Route::get('/planes', [PlaneController::class, 'index'])->name('planeIndex'); 
+    Route::post('/planes', [PlaneController::class, 'store'])->name('planeStore'); 
+    
     Route::get('/planes/{id}', [PlaneController::class, 'show'])->name('planeShow'); 
     Route::put('/planes/{id}', [PlaneController::class, 'update'])->name('planeUpdate'); 
     Route::delete('/planes/{id}', [PlaneController::class, 'destroy'])->name('planeDelete');
