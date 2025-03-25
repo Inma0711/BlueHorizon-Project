@@ -36,6 +36,7 @@ Route::post('/searchFlight', [FlightListController::class, 'search'])->name('sea
 Route::put('/editFlight/{id}', [FlightListController::class, 'update'])->name('updateFlight'); 
 Route::delete('/deleteFlight/{id}', [FlightListController::class, 'destroy'])->name('deleteFlight');
 
+
 Route::post('/reserve-flight/{flight}', [UserReservationController::class, 'store'])->name('reserveFlight');
 Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');
 Route::delete('/reservations/{id}', [UserReservationController::class, 'destroy'])->name('reservationsDestroy');

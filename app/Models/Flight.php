@@ -36,11 +36,6 @@ class Flight extends Model
         return $this->hasMany(Reservation::class, 'flight_id');
     }
 
-    public function hasAvailableSeats(): bool
-    {
-        return $this->available_seats > 0;
-    }
-
     public function passengers()
     {
         return $this->hasManyThrough(User::class, Reservation::class, 'flight_id', 'id', 'id', 'user_id');
