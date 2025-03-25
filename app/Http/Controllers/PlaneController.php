@@ -54,20 +54,20 @@ class PlaneController extends Controller
     public function edit(Request $request)
     {
         $plane = null;
-        
+
         if ($request->has('search_id')) {
             $plane = Plane::find($request->input('search_id'));
-    
+
             if (!$plane) {
                 return redirect()->route('editAircraft')->with('error', 'Avión no encontrado');
             }
         }
-    
-        $planes = Plane::all(); 
-    
+
+        $planes = Plane::all();
+
         return view('editAircraft', compact('plane', 'planes'));
     }
-    
+
 
 
     public function search(Request $request)
@@ -105,23 +105,22 @@ class PlaneController extends Controller
         return redirect()->route('planeList')->with('success', 'Avión actualizado con éxito');
     }
 
-    
+
     public function destroy($id)
     {
         $plane = Plane::find($id);
-    
+
         if ($plane) {
-        
+
             $plane->delete();
-    
+
             $maxId = DB::table('planes')->max('id');
-    
+
             DB::statement("ALTER TABLE planes AUTO_INCREMENT = " . ($maxId + 1));
-    
+
             return redirect()->route('planeList')->with('success', 'Avión eliminado correctamente');
         } else {
             return redirect()->route('planeList')->with('error', 'Avión no encontrado');
         }
     }
-    
 }
