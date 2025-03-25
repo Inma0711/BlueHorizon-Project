@@ -39,7 +39,7 @@ class FlightListController extends Controller
 
         Flight::create($validated);
 
-        return redirect()->route('createFlight')->with('success', 'Vuelo creado con éxito');
+        return redirect()->route('flightList')->with('success', 'Vuelo creado con éxito');
     }
 
 
@@ -78,7 +78,7 @@ class FlightListController extends Controller
 
         $flight->update($validated);
 
-        return redirect()->route('editFlight')->with('success', 'Vuelo actualizado con éxito');
+        return redirect()->route('flightList')->with('success', 'Vuelo actualizado con éxito');
     }
 
     public function search(Request $request)

@@ -46,7 +46,7 @@ class PlaneController extends Controller
             'max_seats' => $validated['max_seats'],
         ]);
 
-        return redirect()->route('createAircraft')->with('success', 'Avión creado con éxito');
+        return redirect()->route('planeList')->with('success', 'Avión creado con éxito');
     }
 
 
@@ -101,7 +101,7 @@ class PlaneController extends Controller
 
         $plane->update($validated);
 
-        return redirect()->route('editAircraft')->with('success', 'Avión actualizado con éxito');
+        return redirect()->route('planeList')->with('success', 'Avión actualizado con éxito');
     }
 
     public function destroy($id)
