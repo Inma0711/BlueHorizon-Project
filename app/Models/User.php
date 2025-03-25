@@ -49,6 +49,15 @@ class User extends Authenticatable
         ];
     }
 
+    protected $casts = [
+        'isAdmin' => 'boolean', 
+    ];
+
+  
+    public function isAdmin(): bool
+    {
+        return (bool) $this->isAdmin;
+    }
 
     public function reservations(): HasMany
     {

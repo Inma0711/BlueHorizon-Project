@@ -14,12 +14,10 @@ class UserReservationController extends Controller
 
     public function indexAdmin()
     {
-        // Obtener todos los usuarios con sus reservas activas
         $users = User::with(['reservations.flight', 'activeReservations.flight'])->get();
 
         return view('reserveListAdmin', compact('users'));
     }
-
 
 
     public function store($flight_id)
@@ -78,51 +76,18 @@ class UserReservationController extends Controller
         return view('myReservations', compact('futureReservations', 'pastReservations'));
     }
 
-
     public function activeReservationsIndex()
     {
-
-        if (Auth::user()->isAdmin) {
-            return redirect()->route('login')->with('error', 'Debes iniciar sesión para ver tus reservas.');
-        }
-
         $user = Auth::user();
+
+        if ($user->is_admin) {
+            return redirect()->route('dashboard')->with('error', 'No tienes reservas activas.');
+        }
 
         $activeReservations = $user->activeReservations()->with('flight')->get();
 
         return view('activeReservations', compact('activeReservations'));
     }
-
-
-    /*
-    public function create()
-    {
-        //
-    }
-
-   
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-   
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-        */
 
     public function destroy($id)
     {

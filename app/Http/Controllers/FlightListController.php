@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Plane;
 use App\Models\Flight;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FlightListController extends Controller
 {
-    
+
     public function index()
     {
         $flightLists = Flight::all();
@@ -44,21 +45,21 @@ class FlightListController extends Controller
 
 
     public function edit(Request $request)
-{
-    $flights = Flight::all();
-    $planes = Plane::all();
-    $selectedFlight = null;
+    {
+        $flights = Flight::all();
+        $planes = Plane::all();
+        $selectedFlight = null;
 
-    if ($request->has('search_id')) {
-        $selectedFlight = Flight::find($request->input('search_id'));
+        if ($request->has('search_id')) {
+            $selectedFlight = Flight::find($request->input('search_id'));
 
-        if (!$selectedFlight) {
-            return redirect()->route('editFlight')->with('error', 'Vuelo no encontrado');
+            if (!$selectedFlight) {
+                return redirect()->route('editFlight')->with('error', 'Vuelo no encontrado');
+            }
         }
-    }
 
-    return view('editFlight', compact('flights', 'planes', 'selectedFlight'));
-}
+        return view('editFlight', compact('flights', 'planes', 'selectedFlight'));
+    }
 
 
     public function update(Request $request, $id)
@@ -92,11 +93,23 @@ class FlightListController extends Controller
         }
         return view('editFlight', compact('flight'));
     }
-    /*
-   
-    public function destroy(string $id)
+
+
+    public function destroy($id)
     {
-        //
+        $flight = Flight::find($id);
+
+        if ($flight) {
+
+            $flight->delete();
+
+            $maxId = DB::table('flights')->max('id');
+
+            DB::statement("ALTER TABLE flights AUTO_INCREMENT = " . ($maxId + 1));
+
+            return redirect()->route('flightList')->with('success', 'Vuelo eliminado correctamente');
+        } else {
+            return redirect()->route('flightList')->with('error', 'Vuelo no encontrado');
+        }
     }
-        */
 }

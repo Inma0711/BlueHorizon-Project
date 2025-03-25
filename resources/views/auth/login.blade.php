@@ -12,7 +12,7 @@
         @csrf
 
         <input id="email" type="email" class="input-field @error('email') is-invalid @enderror" 
-            name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+            name="email" value="{{ old('email') }}" required autocomplete="off" autofocus placeholder="Email">
         @error('email')
             <span class="invalid-feedback">{{ $message }}</span>
         @enderror
@@ -41,13 +41,5 @@
         @endif
     </form>
 </div>
-</div>
-
-<div class="lights-container">
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div> 
 </div>
 @endsection

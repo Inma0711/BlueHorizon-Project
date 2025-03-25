@@ -5,7 +5,8 @@
     padding: 3rem;
 }
 
-#future-reservations, #past-reservations h2 {
+#future-reservations,
+#past-reservations h2 {
     width: 100%;
     text-align: center;
     margin-bottom: 10px;
@@ -60,7 +61,6 @@
     gap: 20px;
 }
 
-
 .show-reservations {
     display: flex !important;
     opacity: 1;
@@ -68,21 +68,21 @@
 }
 
 .reservation {
-    background-color: white;
+    background-color: var(--white);
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 80%;
     max-width: 500px;
     margin-bottom: 20px;
-    text-align: left; 
+    text-align: left;
     display: flex;
     flex-direction: column;
-    position: relative; 
+    position: relative;
 }
 
 .delete-btn {
-    background-color: #de0f3f;
+    background-color: var(--red1);
     border: none;
     padding: 8px 12px;
     border-radius: 5px;
@@ -96,6 +96,65 @@
 }
 
 .delete-btn:hover {
-    background-color: #c00d36;
+    background-color: var(--red2);
     transform: scale(1.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.user-card {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border: none;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.reservations {
+    margin-left: 15px;
+    font-size: 17px;
+}
+
+.reservations ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reservations li {
+    margin-bottom: 15px;
+}
+
+.reservations strong {
+    font-weight: bold;
 }
