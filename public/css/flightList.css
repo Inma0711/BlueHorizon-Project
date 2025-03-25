@@ -1,18 +1,18 @@
 .title-flight {
     font-size: 50px;
+    margin-bottom: 50px;
     font-family: "Times New Roman", Times, serif;
     color: var(--darkAquamarine);
     font-weight: none;
     text-align: center;
-    margin-bottom: 5%;
 }
 
-.flight-list {
+.item-flight {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 50px;
+    gap: 20px;
+    width: 100%;
 }
 
 .item {
@@ -21,11 +21,7 @@
     border-radius: 1rem;
     width: 50%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.item:hover {
-  
-    cursor: pointer;
+    min-width: 60%;
 }
 
 .plane-item {
@@ -40,14 +36,14 @@
 .container-flight2 {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     font-size: 20px;
     font-weight: bold;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    gap: 2rem; 
-    padding: 10px 20px; 
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    gap: 2rem;
+    padding: 10px 20px;
 }
-
 
 .title-country {
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
@@ -66,40 +62,106 @@
 
 .container-flight3 {
     background-image: url("../img/planeItem2.png");
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     display: flex;
     gap: 10rem;
     justify-content: space-evenly;
     align-items: center;
-    color: rgb(0, 0, 0);
     font-weight: bold;
     margin-top: 10px;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
     padding: 0 20px;
-    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .ctf-3-1 {
-    margin-left: 15%;
+    margin-left: 20%;
+}
+
+.ctf-3-2 {
+    margin-left: 3%;
 }
 
 .ctf-3-3 {
-    margin: 20px; 
-    border: 3px solid var(--grey); 
-    border-radius: 10px; 
-    padding: 15px;
-    margin-right: 4%;
-    font-size: 20px;
-    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    text-align: center;
+   margin-left: 5%;
+    margin-right: -20%;
 }
 
-.ctf-3-3:hover {
-    border-color: var(--aquamarine); 
-    background-color: rgba(101, 162, 171, 0.1); 
-    box-shadow: 0 0 10px rgba(101, 162, 171, 0.5); 
-  }
+.button-reserve {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 1rem;
+    width: 50px;
+    cursor: pointer;
+    border: 3px solid var(--grey);
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 40px;
+    background-color: white;
+    transition: border 0.3s ease; 
+}
+
+.button-reserve:hover {
+    border: 3px solid rgb(21, 109, 153); 
+    box-shadow: 0 0 10px rgba(21, 109, 153, 0.5); 
+}
+
+.button-reserve img {
+    width: 30px;
+    height: 20px;
+}
+
+.item-flight {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.flight-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 80px;
+    justify-content: center;
+}
+
+.button-card-container {
+    display: flex;
+    gap: 10px;
+}
+
+.button-delete-container {
+    align-self: flex-start;
+}
+
+.button-delete {
+    background-color: #de0f3f;
+    border: none;
+    width: 50px;
+    padding: 10px;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.button-delete:hover {
+    transform: scale(1.1);
+}
+
+.trash-icon {
+    width: 20px;
+    height: auto;
+}

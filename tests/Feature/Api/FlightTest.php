@@ -34,14 +34,8 @@ class FlightTest extends TestCase
                 'departure_location' => $flight->departure_location,
                 'arrival_location' => $flight->arrival_location,
                 'price' => $flight->price,
+                'status' =>$flight->status
             ]);
-    }
-
-    public function test_CheckIfYouAreTryingToSearchForAFlightThatDoesNotExist()
-    {
-        $response = $this->getJson(route('flightShow', ['id' => 999]));
-        $response->assertStatus(404)
-            ->assertJson(['message' => 'Vuelo no encontrado']);
     }
 
     public function test_CheckIfAFlightIsCreatedCorrectly()
@@ -54,7 +48,8 @@ class FlightTest extends TestCase
             'date' => now()->toDateString(),
             'departure_location' => 'Madrid',
             'arrival_location' => 'Londres',
-            'price' => 50, // Se agrega price porque es obligatorio en la migración
+            'price' => 50,
+            'status' => 0,
         ];
 
         $response = $this->actingAs($user, 'sanctum')->postJson(route('flightStore'), $data);
@@ -63,6 +58,13 @@ class FlightTest extends TestCase
             ->assertJson($data);
 
         $this->assertDatabaseHas('flights', $data);
+    }
+
+    public function test_CheckIfYouAreTryingToSearchForAFlightThatDoesNotExist()
+    {
+        $response = $this->getJson(route('flightShow', ['id' => 999]));
+        $response->assertStatus(404)
+            ->assertJson(['message' => 'Vuelo no encontrado']);
     }
 
     public function test_CheckThatAFlightCannotBeCreatedIfMandatoryFieldsAreMissing()
@@ -84,6 +86,7 @@ class FlightTest extends TestCase
             'departure_location' => 'Madrid',
             'arrival_location' => 'Londres',
             'price' => 50,
+            'status' => 1
         ]);
 
         $updatedData = [
@@ -92,6 +95,7 @@ class FlightTest extends TestCase
             'departure_location' => 'Barcelona',
             'arrival_location' => 'París',
             'price' => 75,
+            'status' => 0
         ];
 
         $response = $this->actingAs($user, 'sanctum')->putJson(route('flightUpdate', $flight->id), $updatedData);
@@ -112,6 +116,7 @@ class FlightTest extends TestCase
             'departure_location' => 'Roma',
             'arrival_location' => 'Berlín',
             'price' => 100,
+            'status' => 0
         ]);
 
         $response->assertStatus(404);

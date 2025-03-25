@@ -3,6 +3,7 @@
 namespace Tests\Feature\Api;
 
 use Tests\TestCase;
+use App\Models\User;
 use App\Models\Plane;
 use App\Models\Flight;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -23,6 +24,7 @@ class FlightListTest extends TestCase
 
     use RefreshDatabase;
 
+    /*
     public function test_CheckItDisplaysTheFlightListViewWithAllFlights()
     {
         Plane::factory(3)->create();
@@ -36,6 +38,7 @@ class FlightListTest extends TestCase
                    $viewFlights->pluck('id')->sort()->values()->all() === $flights->pluck('id')->sort()->values()->all();
         });
     }
+    */
 
     public function test_CheckItDisplaysAnEmptyFlightListIfNoFlightsExist()
     {

@@ -8,7 +8,7 @@
 
             <div class="container-button">
                 <p>"Tu viaje, nuestro horizonte"</p>
-                <a href="{{ route('flightList') }}" class="btn-home">COMENZAR</a>
+                <a href="{{ Auth::check() && Auth::user()->isAdmin ? route('userReservation') : route('flightList') }}" class="btn-home">COMENZAR</a>
             </div>
         </div>
     </div>

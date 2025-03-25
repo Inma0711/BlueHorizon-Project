@@ -8,7 +8,7 @@
         </div>
         <h2>{{ __('Registro') }}</h2>
         <div class="card-body">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" autocomplete="off">
                 @csrf
 
                 <div class="row mb-3">

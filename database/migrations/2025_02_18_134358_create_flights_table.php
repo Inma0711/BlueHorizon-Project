@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('departure_location');
             $table->string('arrival_location');
             $table->integer('price');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

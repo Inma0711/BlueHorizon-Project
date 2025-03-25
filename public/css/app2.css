@@ -1,16 +1,21 @@
 @import url(header2.css);
 @import url(footer.css);
 @import url(flightList.css);
+@import url(planeCreate.css);
+@import url(planeEdit.css);
+@import url(planeList.css);
+@import url(reserves.css);
 
 :root {
     --darkAquamarine: #354e55;
-    --darkGrey: #ffffff33;
     --aquamarine: #65a2ab;
     --lightAquamarine: #b9d9dd;
     --grey: #dbdbdb;
     --lightBlue: #deedef;
     --white: #ffffff;
     --yellow: #fbbf24;
+    --red1: #de0f3f;
+    --red2: #c00d36;
 }
 
 body,
@@ -21,3 +26,13 @@ html {
     height: 100%;
     padding-top: 80px;
 }
+
+/*footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+    */

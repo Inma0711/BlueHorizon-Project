@@ -1,0 +1,160 @@
+.button-option {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 3rem;
+}
+
+#future-reservations,
+#past-reservations h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.button-option button {
+    background-color: var(--aquamarine);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-option button:hover {
+    background-color: #5fc9a6;
+}
+
+.reservations-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.reservations-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    display: none;
+}
+
+#future-reservations {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    color: var(--darkAquamarine);
+}
+
+#past-reservations {
+    color: var(--darkAquamarine);
+    gap: 20px;
+}
+
+.show-reservations {
+    display: flex !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reservation {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.delete-btn {
+    background-color: var(--red1);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.delete-btn:hover {
+    background-color: var(--red2);
+    transform: scale(1.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.user-card {
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border: none;
+}
+
+h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.reservations {
+    margin-left: 15px;
+    font-size: 17px;
+}
+
+.reservations ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reservations li {
+    margin-bottom: 15px;
+}
+
+.reservations strong {
+    font-weight: bold;
+}
