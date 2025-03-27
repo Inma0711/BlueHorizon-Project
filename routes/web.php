@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/createAircraft', [PlaneController::class, 'create'])->middleware('role:admin')->name('createAircraft');
-Route::post('/createAircraft', [PlaneController::class, 'store']); 
+Route::post('/createAircraft', [PlaneController::class, 'store'])->name('storeAircraft'); 
 Route::get('/editAircraft', [PlaneController::class, 'edit'])->name('editAircraft');  
 Route::post('/searchAircraft', [PlaneController::class, 'search'])->name('searchAircraft');  
 Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->name('updateAircraft'); 
