@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Plane;
 use App\Models\Flight;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -120,4 +121,34 @@ class FlightListControllerTest extends TestCase
         $response->assertRedirect(route('editFlight'));
         $response->assertSessionHas('error', 'Vuelo no encontrado');
     }
+
+
+    public function test_CheckItRedirectsWithErrorIfFlightNotFound()
+    {
+        $response = $this->get(route('editFlight', ['search_id' => 999]));
+        $response->assertRedirect(route('editFlight'));
+        $response->assertSessionHas('error', 'Vuelo no encontrado');
+    }
+
+
+    public function test_CheckItRedirectsWithErrorIfFlightNotFoundOnUpdate()
+    {
+        $response = $this->put(route('updateFlight', ['id' => 999]), [
+            'departure_time' => '2025-04-01 10:00:00'
+        ]);
+
+        $response->assertRedirect(route('editFlight'));
+        $response->assertSessionHas('error', 'Debe buscar un ID válido antes de editar.');
+    }
+
+    public function test_it_redirects_with_error_if_flight_not_found()
+    {
+        // 🔹 Simula una búsqueda con un ID inexistente
+        $response = $this->get(route('editFlight', ['search_id' => 999]));
+
+        // 🔹 Debe redirigir a editFlight con un mensaje de error
+        $response->assertRedirect(route('editFlight'));
+        $response->assertSessionHas('error', 'Vuelo no encontrado');
+    }
+
 }
