@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/createAircraft', [PlaneController::class, 'create'])->middleware('role:admin')->name('createAircraft');
-Route::post('/createAircraft', [PlaneController::class, 'store']); 
+Route::post('/createAircraft', [PlaneController::class, 'store'])->name('storeAircraft'); 
 Route::get('/editAircraft', [PlaneController::class, 'edit'])->name('editAircraft');  
 Route::post('/searchAircraft', [PlaneController::class, 'search'])->name('searchAircraft');  
 Route::put('/editAircraft/{id}', [PlaneController::class, 'update'])->name('updateAircraft'); 
@@ -28,7 +28,7 @@ Route::get('/userReservation', [UserReservationController::class, 'indexAdmin'])
 Route::get('/myReservations', [UserReservationController::class, 'indexUser'])->name('myReservations');
 Route::get('/listAircraftAdmin', [PlaneController::class, 'adminIndex'])->name('planeList');
 
-Route::get('/flightList', [FlightListController::class, 'index'])->name('flightList');
+Route::get('/flightList', [FlightListController::class, 'index'])->middleware('auth:web')->name('flightList');
 Route::get('/createFlight', [FlightListController::class, 'create'])->middleware('role:admin')->name('createFlight');
 Route::post('/createFlight', [FlightListController::class, 'store']); 
 Route::get('/editFlight', [FlightListController::class, 'edit'])->name('editFlight');  

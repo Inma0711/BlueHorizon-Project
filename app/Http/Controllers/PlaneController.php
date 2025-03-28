@@ -107,21 +107,16 @@ class PlaneController extends Controller
 
     
     public function destroy($id)
-    {
-        $plane = Plane::find($id);
-    
-        if ($plane) {
-        
-            $plane->delete();
-    
-            $maxId = DB::table('planes')->max('id');
-    
-            DB::statement("ALTER TABLE planes AUTO_INCREMENT = " . ($maxId + 1));
-    
-            return redirect()->route('planeList')->with('success', 'Avión eliminado correctamente');
-        } else {
-            return redirect()->route('planeList')->with('error', 'Avión no encontrado');
-        }
+{
+    $plane = Plane::find($id);
+
+    if ($plane) {
+        $plane->delete();
+        return redirect()->route('planeList')->with('success', 'Avión eliminado correctamente');
+    } else {
+        return redirect()->route('planeList')->with('error', 'Avión no encontrado');
     }
+}
+
     
 }

@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Plane;
 use App\Models\Flight;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -83,7 +84,7 @@ class FlightListControllerTest extends TestCase
         $plane = Plane::create(['name' => 'Boeing 737']);
         $data = [
             'plane_id' => $plane->id,
-            'date' => now()->addDays(1)->toDateString(),  
+            'date' => now()->addDays(1)->toDateString(),
             'departure_location' => 'NEW YORK',
             'arrival_location' => 'LONDON',
             'price' => 1500,
@@ -97,7 +98,7 @@ class FlightListControllerTest extends TestCase
             'departure_location' => strtoupper($data['departure_location']),
             'arrival_location' => strtoupper($data['arrival_location']),
             'price' => $data['price'],
-            'status' => true,  
+            'status' => true,
         ]);
 
         $response->assertRedirect(route('flightList'));
@@ -120,4 +121,58 @@ class FlightListControllerTest extends TestCase
         $response->assertRedirect(route('editFlight'));
         $response->assertSessionHas('error', 'Vuelo no encontrado');
     }
+
+
+    public function test_CheckItRedirectsWithErrorIfFlightNotFound()
+    {
+        $response = $this->get(route('editFlight', ['search_id' => 999]));
+        $response->assertRedirect(route('editFlight'));
+        $response->assertSessionHas('error', 'Vuelo no encontrado');
+    }
+
+
+    public function test_CheckItRedirectsWithErrorIfFlightNotFoundOnUpdate()
+    {
+        $response = $this->put(route('updateFlight', ['id' => 999]), [
+            'departure_time' => '2025-04-01 10:00:00'
+        ]);
+
+        $response->assertRedirect(route('editFlight'));
+        $response->assertSessionHas('error', 'Debe buscar un ID válido antes de editar.');
+    }
+
+
+    public function test_DestroyFlightSuccessfully()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $flight = Flight::factory()->create();
+
+        $response = $this->delete(route('deleteFlight', $flight->id));
+        $this->assertDatabaseMissing('flights', ['id' => $flight->id]);
+       
+        $response->assertRedirect(route('flightList'));
+        $response->assertSessionHas('success', 'Vuelo eliminado correctamente');
+    }
+
+
+    public function test_DestroyFlightNotFound()
+    {
+        $this->withoutExceptionHandling();
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+
+        $nonExistentId = 9999;
+
+        $response = $this->delete(route('deleteFlight', $nonExistentId));
+
+        $response->assertRedirect(route('flightList'));
+        $response->assertSessionHas('error', 'Vuelo no encontrado');
+    }
+
+    
 }
