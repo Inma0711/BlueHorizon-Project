@@ -142,7 +142,7 @@ http://localhost:8000/api/flights/{id}
 
 ***
 ## 👾 Test
-This project has 79% test coverage.
+This project has 72.2% test coverage.
 
 -To test the tests and see the coverage in the terminal:
 
