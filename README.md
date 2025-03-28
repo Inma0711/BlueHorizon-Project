@@ -13,9 +13,18 @@ When we enter the website we find the main welcome page, we can click on start a
 ## :eye_speech_bubble: Project overview
 
 ![homeBlueAirline](https://github.com/user-attachments/assets/cd564260-9906-41da-9c79-9642baef613f)
-![flightList](https://github.com/user-attachments/assets/1ed522ba-1618-4c6e-bac7-053a8ea5f577)
 ![login](https://github.com/user-attachments/assets/a665f2a8-5e2b-4005-95dd-3173d7a43692)
 ![registrer](https://github.com/user-attachments/assets/1505c911-e89b-4247-b06f-e854522f748a)
+
+### View User
+![flightList](https://github.com/user-attachments/assets/19232fd8-32d7-4dd1-8257-527ff442bd28)
+![myReservations](https://github.com/user-attachments/assets/5dfd6c4c-1d8e-4485-9063-ecfbd9458a7f)
+
+### View Admin
+![reserveListAdmin](https://github.com/user-attachments/assets/e9ccfa8c-dfc0-46bd-9a04-7e5cd1091267)
+![listAircraftAdmin](https://github.com/user-attachments/assets/3661633d-5a85-4141-bd07-1609a83f7843)
+![flightList](https://github.com/user-attachments/assets/16388559-ec19-4fb1-a5c3-de1fd733baa6)
+
 
 
 ***
@@ -72,7 +81,8 @@ npm run dev
 ***
 ## 📚 Database diagram
 Here we find the project diagram which is made up of a single table
-![diagramBlueHorizon](https://github.com/user-attachments/assets/7c09f62e-0a37-4249-a1ce-13f4f92d5fdd)
+![diagramBlueHorizon](https://github.com/user-attachments/assets/22999137-65f5-4754-be6f-d02645dccaa4)
+
 
 
 
@@ -139,7 +149,8 @@ This project has 79% test coverage.
 ```
   php artisan test --coverage
 ```
-![testBlueHorizon](https://github.com/user-attachments/assets/76ebf22c-a6be-4c56-8085-05e8d9684960)
+![testHorizon](https://github.com/user-attachments/assets/28ea4c36-a1e1-48bb-bb3f-b7e789be19ab)
+
 
 
 
