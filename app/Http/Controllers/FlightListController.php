@@ -12,7 +12,8 @@ class FlightListController extends Controller
 
     public function index()
     {
-        $flightLists = Flight::all();
+        $flightLists = Flight::where('date', '>=', now())->orderBy('date', 'asc')->get();
+
         return view('flightList', compact('flightLists'));
     }
 
