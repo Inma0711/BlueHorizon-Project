@@ -97,20 +97,15 @@ class FlightListController extends Controller
 
 
     public function destroy($id)
-    {
-        $flight = Flight::find($id);
+{
+    $flight = Flight::find($id);
 
-        if ($flight) {
-
-            $flight->delete();
-
-            $maxId = DB::table('flights')->max('id');
-
-            DB::statement("ALTER TABLE flights AUTO_INCREMENT = " . ($maxId + 1));
-
-            return redirect()->route('flightList')->with('success', 'Vuelo eliminado correctamente');
-        } else {
-            return redirect()->route('flightList')->with('error', 'Vuelo no encontrado');
-        }
+    if ($flight) {
+        $flight->delete();
+        return redirect()->route('flightList')->with('success', 'Vuelo eliminado correctamente');
+    } else {
+        return redirect()->route('flightList')->with('error', 'Vuelo no encontrado');
     }
+}
+
 }

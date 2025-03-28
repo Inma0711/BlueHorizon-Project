@@ -105,4 +105,51 @@ class PlaneControllerTest extends TestCase
         $response->assertRedirect(route('planeList'));
         $response->assertSessionHas('error', 'Avión no encontrado');
     }
+
+    public function test_DestroyPlaneSuccessfully()
+    {
+        $this->withoutExceptionHandling();
+    
+        $user = User::factory()->create();
+        $this->actingAs($user);
+    
+        $plane = Plane::factory()->create();
+        $response = $this->delete(route('deleteAircraft', $plane->id));
+    
+        $this->assertDatabaseMissing('planes', ['id' => $plane->id]);
+
+        $response->assertRedirect(route('planeList'));
+        $response->assertSessionHas('success', 'Avión eliminado correctamente');
+    }
+    
+
+    public function test_DestroyPlaneNotFound()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+    
+        $nonExistentId = 9999;
+        $response = $this->delete(route('deleteAircraft', $nonExistentId));
+    
+        $response->assertRedirect(route('planeList'));
+        $response->assertSessionHas('error', 'Avión no encontrado');
+    }
+
+    
+    public function test_SearchPlaneNotFound()
+    {
+        $this->withoutExceptionHandling();
+    
+        $user = User::factory()->create();
+        $this->actingAs($user);
+    
+        $nonExistentId = 9999;
+        $response = $this->post(route('searchAircraft'), ['search_id' => $nonExistentId]);
+        $response->assertRedirect(route('editAircraft'));
+        $response->assertSessionHas('error', 'Avión no encontrado');
+    }
+    
+
 }
